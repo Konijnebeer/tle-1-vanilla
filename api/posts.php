@@ -7,10 +7,10 @@ if (isset($_GET['action'])) {
     if ($action === 'getall') {
         try {
             $db = Database::getInstance();
-            $users = $db->fetchAll("SELECT * FROM users");
-            $data = ['users' => $users];
+            $posts = $db->fetchAll("SELECT * FROM posts");
+            $data = ['posts' => $posts];
         } catch (Exception $e) {
-            $data = ['error' => 'Failed to fetch users'];
+            $data = ['error' => 'Failed to fetch posts'];
         }
     } else {
         $data = ['error' => 'Unknown action'];
@@ -26,3 +26,4 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 echo json_encode($data);
 exit;
+?>
