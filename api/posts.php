@@ -1,11 +1,10 @@
 <?php
 
 require_once 'includes/database.php';
-
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
-    
-    if ($action === 'users') {
+
+    if ($action === 'getall') {
         try {
             $db = Database::getInstance();
             $users = $db->fetchAll("SELECT * FROM users");

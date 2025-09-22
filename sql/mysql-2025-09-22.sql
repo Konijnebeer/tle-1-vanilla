@@ -56,7 +56,7 @@ ALTER TABLE
 CREATE TABLE `roles`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
-    `type` ENUM('') NOT NULL,
+    `type` ENUM('type', 'other') NOT NULL,
     `logo` VARCHAR(255) NOT NULL
 );
 CREATE TABLE `role_user`(
