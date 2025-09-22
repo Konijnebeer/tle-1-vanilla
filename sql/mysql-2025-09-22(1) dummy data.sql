@@ -32,15 +32,15 @@ INSERT INTO `groups` (`user_id`, `name`, `discription`, `theme`) VALUES
 (4, 'Book Club', 'Monthly book discussions and reviews', 'education');
 
 -- Insert sample posts
-INSERT INTO `posts` (`user_id`, `image_id`, `text_content`) VALUES
-(1, '550e8400-e29b-41d4-a716-446655440000', 'Just captured this amazing sunset! The colors were absolutely breathtaking. #photography #nature'),
-(2, '550e8400-e29b-41d4-a716-446655440001', 'Hiking in the mountains this weekend. The view from the top was worth every step! #hiking #adventure'),
-(3, NULL, 'Does anyone have recommendations for good restaurants in downtown? Looking for something new to try!'),
-(4, '550e8400-e29b-41d4-a716-446655440002', 'Beach day! The waves were perfect for surfing today. #beach #surfing #ocean'),
-(5, NULL, 'Just finished reading an amazing book. Would love to discuss it with fellow book lovers!'),
-(1, '550e8400-e29b-41d4-a716-446655440004', 'The city looks so different at night. Love the urban landscape! #citylife #nightphotography'),
-(2, NULL, 'Working on a new tech project. Excited to share the results soon! #coding #innovation'),
-(3, '550e8400-e29b-41d4-a716-446655440003', 'Found this peaceful forest trail during my morning walk. Nature is the best therapy.');
+INSERT INTO `posts` (`user_id`, `group_id`, `image_id`, `text_content`) VALUES
+(1, 1, '550e8400-e29b-41d4-a716-446655440000', 'Just captured this amazing sunset! The colors were absolutely breathtaking. #photography #nature'),
+(2, 1, '550e8400-e29b-41d4-a716-446655440001', 'Hiking in the mountains this weekend. The view from the top was worth every step! #hiking #adventure'),
+(3, 4, NULL, 'Does anyone have recommendations for good restaurants in downtown? Looking for something new to try!'),
+(4, 1, '550e8400-e29b-41d4-a716-446655440002', 'Beach day! The waves were perfect for surfing today. #beach #surfing #ocean'),
+(5, 5, NULL, 'Just finished reading an amazing book. Would love to discuss it with fellow book lovers!'),
+(1, 1, '550e8400-e29b-41d4-a716-446655440004', 'The city looks so different at night. Love the urban landscape! #citylife #nightphotography'),
+(2, 2, NULL, 'Working on a new tech project. Excited to share the results soon! #coding #innovation'),
+(3, 3, '550e8400-e29b-41d4-a716-446655440003', 'Found this peaceful forest trail during my morning walk. Nature is the best therapy.');
 
 -- Insert sample user_group relationships
 INSERT INTO `user_group` (`user_id`, `group_id`) VALUES
