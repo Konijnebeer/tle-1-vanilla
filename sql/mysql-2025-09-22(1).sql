@@ -15,8 +15,8 @@ ALTER TABLE
     `users` ADD UNIQUE `users_phone_number_unique`(`phone_number`);
 CREATE TABLE `posts`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `user_id` BIGINT NOT NULL,
-    `image_id` BIGINT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `image_id` CHAR(36) NULL,
     `text_content` TEXT NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -36,7 +36,7 @@ CREATE TABLE `images`(
 );
 CREATE TABLE `groups`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `user_id` BIGINT NOT NULL,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `name` VARCHAR(255) NOT NULL,
     `discription` VARCHAR(255) NOT NULL,
     `theme` VARCHAR(255) NOT NULL,
@@ -47,7 +47,7 @@ ALTER TABLE
     `groups` ADD INDEX `groups_user_id_index`(`user_id`);
 CREATE TABLE `user_group`(
     `user_id` BIGINT UNSIGNED NOT NULL,
-    `group_id` BIGINT NOT NULL
+    `group_id` BIGINT UNSIGNED NOT NULL
 );
 ALTER TABLE
     `user_group` ADD INDEX `user_group_user_id_index`(`user_id`);
@@ -56,13 +56,13 @@ ALTER TABLE
 CREATE TABLE `roles`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
-    `type` ENUM('type', 'other') NOT NULL,
+    `type` ENUM('') NOT NULL,
     `logo` VARCHAR(255) NOT NULL
 );
 CREATE TABLE `role_user`(
     `role_id` BIGINT UNSIGNED NOT NULL,
-    `user_id` BIGINT NOT NULL,
-    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 ALTER TABLE
     `role_user` ADD INDEX `role_user_role_id_index`(`role_id`);
