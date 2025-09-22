@@ -34,7 +34,7 @@ class Database
             $this->connection = new PDO($dsn, DB_USER, DB_PASS, $options);
 
             if (ENVIRONMENT === 'development') {
-                echo "Database connection established successfully.\n";
+                // echo "Database connection established successfully.\n";
             }
         } catch (PDOException $e) {
             if (ENVIRONMENT === 'development') {
