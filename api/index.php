@@ -1,5 +1,4 @@
 <?php
-
 require_once 'includes/database.php';
 
 if (isset($_GET['action'])) {
