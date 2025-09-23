@@ -4,19 +4,19 @@ session_start();
 require_once './includes/Database.php';
 
 // Controleer of gebruiker is ingelogd
-if (!isset($_SESSION['gebruiker_id'])) {
+if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit;
 }
 
 if (isset($_SESSION)) {
-//    $_SESSION['gebruiker_id'] = 8;
-    $gebruiker_id = $_SESSION['gebruiker_id'];
+//    $_SESSION['gebruiker_id'] = 1;
+    $user = $_SESSION['user'];
 
     // Haal PDO via de Database singleton
     $db = Database::getInstance();
     $pdo = $db->getConnection();
-    $profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE id = ?', [$gebruiker_id]);
+    $profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE email = ?', [$user]);
 }
 ?>
 <!DOCTYPE html>
