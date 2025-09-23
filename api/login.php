@@ -11,9 +11,8 @@ $login = false;
 if (isset($_POST['submit'])) {
 
     // Get form data
-    /** @var $db mysqli */
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password_hash'];
 
     // Server-side validation
     $errors = [];
@@ -28,48 +27,34 @@ if (isset($_POST['submit'])) {
 
     // If data valid
     if (empty($errors)) {
-//        echo 'no errors';
-        // SELECT the user from the database, based on the email address.
-        $query = "SELECT * 
-                  FROM users 
-                  WHERE username = '$username'";
-
-        /** @var $db mysqli */
-
-        $result = mysqli_query($db, $query)
-        or die('Error ' . mysqli_error($db) . ' with query ' . $query);
-
-        print_r(mysqli_num_rows($result));
-//        exit;
-        // check if the user exists
-        if (mysqli_num_rows($result) == 1) {
-
-            // Get user data from result
-            $user = mysqli_fetch_assoc($result);
-
-            // Check if the provided password matches the stored password in the database
-            if (password_verify($password, $user['password_hash'])) {
+        $db = Database::getInstance();
+        $user = $db->fetch("SELECT password_hash FROM users WHERE email = ?", [$username]);
+//        $data = ['users' => $user];
+//        print_r($data);
+//
+        // Check if the provided password matches the stored password in the database
+        if (password_verify($password, $user['password_hash'])) {
 //                echo 'password correct';
 //                exit;
 
-                // Store the user in the session
-                $_SESSION['user'] = $username;
+            // Store the user in the session
+            $_SESSION['user'] = $username;
 
-                // Redirect to secure page
-                header('Location: home.php');
-                exit();
-            } else {
-                // Credentials not valid
-                $errors['loginFailed'] = 'Username/password incorrect';
-            }
-            //error incorrect log in
+            // Redirect to secure page
+            header('Location: profiel.php');
+            exit();
         } else {
-            // User doesn't exist
+            // Credentials not valid
             $errors['loginFailed'] = 'Username/password incorrect';
         }
         //error incorrect log in
-
+    } else {
+        // User doesn't exist
+        $errors['loginFailed'] = 'Username/password incorrect';
     }
+    //error incorrect log in
+
+//    }
 }
 ?>
 

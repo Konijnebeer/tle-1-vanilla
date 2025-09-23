@@ -6,34 +6,46 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="styles/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <title>Home</title>
 </head>
-<body>
-<header>
-    <h1 class="text-center">App Name</h1>
+<body class="bg-amber-200 font-audiowide">
+<header class="flex flex-col items-center mt-8">
+    <img src="icons/Logo-ENA.jpg" alt="ENA Logo" class="w-16 h-16 mb-2">
+    <h1>ENA</h1>
 </header>
 <main class="min-h-screen flex flex-col items-center justify-center space-y-6">
     <div class="grid grid-cols-2 gap-6">
-        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg">
-            <h2>Contacts</h2>
+        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-40 h-40 flex items-center justify-center
+                transition transform hover:scale-105 hover:bg-gray-500 hover:shadow-xl cursor-pointer">
+            <a href="">Contacts</a>
         </div>
-        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg">
-            <h2>Account</h2>
+        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-40 h-40 flex items-center justify-center
+                transition transform hover:scale-105 hover:bg-gray-500 hover:shadow-xl cursor-pointer">
+            <a href="">Account</a>
         </div>
-        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg">
-            <h2>Discover</h2>
+        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-40 h-40 flex items-center justify-center
+                transition transform hover:scale-105 hover:bg-gray-500 hover:shadow-xl cursor-pointer">
+            <a href="">Discover</a>
         </div>
-        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg">
-            <h2>History</h2>
+        <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-40 h-40 flex items-center justify-center
+                transition transform hover:scale-105 hover:bg-gray-500 hover:shadow-xl cursor-pointer">
+            <a href="">History</a>
         </div>
     </div>
-    <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-30 h-20 flex items-center justify-center">
-        <h2>Service</h2>
+    <div class="bg-gray-400 p-6 rounded-xl text-center shadow-lg w-40 h-40 flex items-center justify-center
+                transition transform hover:scale-105 hover:bg-gray-500 hover:shadow-xl cursor-pointer">
+        <a href="">Service</a>
     </div>
 </main>
 
-<footer class="absolute bottom-4 right-4">
-    <p class="text-gray-600 hover:underline cursor-pointer">Settings</p>
+<footer class="fixed bottom-4 right-4">
+    <button class="flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg shadow-md transition">
+        <img src="icons/settings.png" alt="Settings" class="w-5 h-5">
+        <span>Settings</span>
+    </button>
 </footer>
 
 </body>
