@@ -16,6 +16,7 @@ ALTER TABLE
 CREATE TABLE `posts`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id` BIGINT UNSIGNED NOT NULL,
+    `group_id` BIGINT UNSIGNED NOT NULL,
     `image_id` CHAR(36) NULL,
     `text_content` TEXT NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -25,6 +26,8 @@ ALTER TABLE
     `posts` ADD INDEX `posts_user_id_index`(`user_id`);
 ALTER TABLE
     `posts` ADD INDEX `posts_image_id_index`(`image_id`);
+ALTER TABLE
+    `posts` ADD INDEX `posts_group_id_index`(`group_id`);
 CREATE TABLE `images`(
     `id` CHAR(36) NOT NULL,
     `path` VARCHAR(255) NOT NULL,
@@ -78,6 +81,8 @@ ALTER TABLE
     `posts` ADD CONSTRAINT `posts_image_id_foreign` FOREIGN KEY(`image_id`) REFERENCES `images`(`id`);
 ALTER TABLE
     `posts` ADD CONSTRAINT `posts_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
+ALTER TABLE
+    `posts` ADD CONSTRAINT `posts_group_id_foreign` FOREIGN KEY(`group_id`) REFERENCES `groups`(`id`);
 ALTER TABLE
     `user_group` ADD CONSTRAINT `user_group_group_id_foreign` FOREIGN KEY(`group_id`) REFERENCES `groups`(`id`);
 ALTER TABLE
