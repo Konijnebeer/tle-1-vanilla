@@ -12,13 +12,12 @@ function createAccountForm() {
     const accountForm = document.createElement('form');
     accountForm.classList.add('form-container');
     accountForm.setAttribute('method', 'post');
-    accountForm.setAttribute('action', '#');
+    accountForm.setAttribute('action', './api/createaccount.php'); // ✅ FIXED
     createAccount.appendChild(accountForm);
     return accountForm;
 }
 
 function fillForm(accountForm) {
-    // Helper to create label + input
     function addField(labelText, type, name) {
         const label = document.createElement('label');
         label.innerText = labelText;
@@ -36,18 +35,16 @@ function fillForm(accountForm) {
         accountForm.appendChild(document.createElement('br'));
     }
 
-    // Add fields
     addField('Email:', 'email', 'email');
     addField('Username:', 'text', 'username');
-    addField('Phone Number:', 'tel', 'phone');
-    addField('Password:', 'password', 'password');
-    addField('Confirm Password:', 'password', 'confirm_password');
+    addField('Telefoonnummer:', 'tel', 'phoneNumber'); // ✅ match PHP
+    addField('Wachtwoord:', 'password', 'password');
+    addField('Wachtwoord bevestigen:', 'password', 'confirm_password'); // ✅ will check in PHP
 
-
-    // Submit button
     const submit = document.createElement('button');
     submit.setAttribute('type', 'submit');
     submit.innerText = 'Create Account';
     accountForm.appendChild(document.createElement('br'));
     accountForm.appendChild(submit);
 }
+

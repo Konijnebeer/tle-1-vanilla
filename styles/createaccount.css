@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+}
+
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.raleway-regular {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 3rem;
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    padding: 10vw;
+    text-align: center;
+}
+
+main {
+    padding: 10vw;
+}
+
+#create-account {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#create-account h2 {
+    align-self: center;
+    padding-bottom: 5vw;
+}
+
+.form-container {
+    align-self: center;
+}
+
+footer {
+    padding: 10vw;
+    text-align: center;
+}

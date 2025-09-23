@@ -5,9 +5,26 @@ body {
     text-align: center;
 }
 
-header p, main p {
+header p {
     font-size: 2rem;
     font-weight: bold;
-    padding-top: 20vw;
+    padding: 40vw 5vw 20vw 5vw;
 }
 
+main p {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20vw 0 10vw 0;
+}
+
+.button {
+    text-decoration: none;
+    background-color: black;
+    padding: 3vw 8vw;
+    border-radius: 10px;
+}
+
+main a {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
