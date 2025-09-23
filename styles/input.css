@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+@theme {
+	--color-background: #edf2f4;
+	--color-primary: #2b2d42;
+	--color-secondary: #8d99ae;
+	--color-accent: #ef233c;
+	--color-danger: #d90429;
+	
+	--font-audiowide: 'Audiowide';
+}
