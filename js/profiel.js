@@ -1,4 +1,4 @@
-fetch('profiel.php')
+fetch('api/profiel.php')
     .then(response => response.json())
     .then(data => {
         const container = document.getElementById('profiel');

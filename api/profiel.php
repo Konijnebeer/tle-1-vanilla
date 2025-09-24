@@ -1,42 +1,26 @@
 <?php
 session_start();
+header('Content-Type: application/json');
 
 require_once './includes/Database.php';
 
 // Controleer of gebruiker is ingelogd
 if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
+    echo json_encode(['error' => 'Niet ingelogd']);
     exit;
 }
 
-if (isset($_SESSION)) {
-//    $_SESSION['gebruiker_id'] = 1;
-    $user = $_SESSION['user'];
+$user = $_SESSION['user'];
 
-    // Haal PDO via de Database singleton
-    $db = Database::getInstance();
-    $pdo = $db->getConnection();
-    $profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE email = ?', [$user]);
+// Haal PDO via de Database
+$db = Database::getInstance();
+$pdo = $db->getConnection();
+
+// Haal profielgegevens op
+$profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE email = ?', [$user]);
+
+if ($profiel) {
+    echo json_encode($profiel);
+} else {
+    echo json_encode(['error' => 'Geen profielgegevens gevonden']);
 }
-?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Profielpagina</title>
-</head>
-<body>
-<h1>Welkom op je profielpagina</h1>
-<script src="profiel.js"></script>
-<?php if ($profiel): ?>
-    <p><strong>Gebruikersnaam:</strong> <?= htmlspecialchars($profiel['username']) ?></p>
-    <p><strong>Email:</strong> <?= htmlspecialchars($profiel['email']) ?></p>
-    <p><strong>Telefoonnummer:</strong> <?= htmlspecialchars($profiel['phone_number']) ?></p>
-    <p><strong>Aangemaakt op:</strong> <?= htmlspecialchars($profiel['created_at']) ?></p>
-    <p><strong>Bijgewerkt op:</strong> <?= htmlspecialchars($profiel['updated_at']) ?></p>
-    <p><a href="logout.php">Uitloggen</a></p>
-<?php else: ?>
-    <p>Geen profielgegevens gevonden.</p>
-<?php endif; ?>
-</body>
-</html>
