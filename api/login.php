@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
             ];
 
             // Redirect to secure page
-            header('Location: ../profiel.html');
+            header('Location: ../home.html');
             exit();
         } else {
             // Credentials not valid or user doesn't exist
