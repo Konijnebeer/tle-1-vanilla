@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #5D6B59;
+    /*background-color: #5D6B59;*/
+    background-color: #F5E9DD;
     font-family: "Audiowide", sans-serif;
 }
 
@@ -10,11 +11,15 @@ header p {
     font-size: 2rem;
     font-weight: bold;
     padding: 30vw 5vw 20vw 5vw;
+    /*color: #b2d4d2;*/
+    color: #3E2C23;
+
 }
 
 main p {
     font-size: 2rem;
     padding: 20vw 0 10vw 0;
+    color: #D97B66;
 }
 
 .button {
@@ -45,4 +50,111 @@ main a {
     align-items: center;
     font-size: 1.5rem;
     margin: 0 auto;
+}
+
+/*hexagon background*/
+
+.hexagon {
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+    opacity: 80%;
+}
+
+.hexagon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.hex-large-one {
+    width: 120px;
+    height: 120px;
+    /*background: #E0A054;*/
+    background: #D97B66;
+    top: 10%;
+    left: -5%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hex-large-two {
+    width: 90px;
+    height: 90px;
+    /*background: #122524;*/
+    background: #E6B450;
+    top: 8%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.hex-medium-one {
+    width: 110px;
+    height: 110px;
+    /*background: #122524;*/
+    background: #8DA76F;
+    top: 25%;
+    right: -5%;
+    animation: float 7s ease-in-out infinite;
+}
+
+.hex-small-one {
+    width: 70px;
+    height: 70px;
+    /*background: #122524;*/
+    background: #8DA76F;
+    top: 45%;
+    right: 65%;
+    animation: float 5s ease-in-out infinite reverse;
+}
+
+.hex-small-two {
+    width: 50px;
+    height: 50px;
+    /*background: #B15F31;*/
+    background: #D97B66;
+    top: 80%;
+    left: 60%;
+    animation: float 9s ease-in-out infinite;
+}
+
+.wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #B18A5E;
+    clip-path: polygon(0 60%, 100% 30%, 100% 100%, 0% 100%);
+    animation: wave 10s ease-in-out infinite alternate;
+}
+
+.wave-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: #E0A054;
+    clip-path: polygon(0 80%, 100% 50%, 100% 100%, 0% 100%);
+    animation: wave 12s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(3deg);
+    }
+}
+
+@keyframes wave {
+    0% {
+        clip-path: polygon(0 60%, 100% 30%, 100% 100%, 0% 100%);
+    }
+    50% {
+        clip-path: polygon(0 40%, 100% 50%, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 70%, 100% 20%, 100% 100%, 0% 100%);
+    }
 }
