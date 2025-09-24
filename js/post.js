@@ -1,7 +1,7 @@
 window.addEventListener('load', init);
 const url = "./api/posts.php";
 
-let field
+let field;
 
 function init() {
     field = document.getElementById('field');
@@ -15,17 +15,21 @@ function success(data) {
         for (const post of data.posts) {
             console.log(post);
         const div = document.createElement('div')
-        div.classList.add('inner')
+        div.classList.add('box')
         div.id = `div${post.id}`
 
         const title = document.createElement('h2')
-        title.innerHTML = `${post.username}`
+        title.innerHTML = `${post.username} - ${post.group_id}`
         div.appendChild(title)
 
         const image = document.createElement('img')
-        image.src = post.image_path
-        image.alt = post.image_name
-        div.appendChild(image)
+            if (post.image_path !== null){
+                image.src = post.image_path
+                image.alt = post.name
+                image.classList.add('postImage')
+                div.appendChild(image)
+            } else {
+            }
 
         const text = document.createElement('p')
         text.innerHTML = post.text_content
