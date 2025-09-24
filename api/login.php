@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="../styles/login.css">
 
     <title>Log in</title>
 </head>
@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
 
-                    <a class="button" href="start.html">&laquo; Go back to START</a>
+                    <a class="button" href="../start.html">&laquo; Go back to START</a>
                 </form>
             </section>
 
