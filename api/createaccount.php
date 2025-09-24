@@ -2,9 +2,9 @@
 /** @var $db mysqli *///
 if (isset($_POST['email'])) {
     
-    $email =$_POST['email'];
-    $username =$_POST['username'];
-    $phoneNumber =$_POST['phoneNumber'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $phoneNumber = $_POST['phoneNumber'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
     
