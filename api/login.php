@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
             // Get all groups the user is part of
             $groups = $db->fetchAll("SELECT g.id FROM `groups` g INNER JOIN user_group ug ON g.id = ug.group_id WHERE ug.user_id = ?", [$user['id']]);
             $groupIds = array_column($groups, 'id');
-            
+
             // Store comprehensive user data in session
             $_SESSION['user'] = [
                 'id' => $user['id'],
@@ -70,13 +70,23 @@ if (isset($_POST['submit'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="styles/login.css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>-->
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">-->
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/input.css">
+
+    <script type="text/javascript" src="../js/hex-background.js"></script>
 
     <title>Log in</title>
 </head>
 <body>
+
+<div class="hexagon hex-large-one"></div>
+<div class="hexagon hex-large-two"></div>
+<div class="hexagon hex-medium-one"></div>
+<div class="hexagon hex-small-one"></div>
+<div class="hexagon hex-small-two"></div>
+
 <section class="section">
     <div class="container">
         <h2 class="title">Log in</h2>
@@ -100,7 +110,7 @@ if (isset($_POST['submit'])) {
                                            value="<?= htmlentities($email ?? '') ?>"/>
                                     <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <p class="help is-danger">
+                                <p class="help">
                                     <?= $errors['email'] ?? '' ?>
                                 </p>
                             </div>

@@ -6,12 +6,12 @@ body {
     background-color: #806542;
 }
 
-.Extrabody {
-    margin: 0 2vw;
-    padding: 0;
-    font-family: sans-serif;
-    text-align: center;
-}
+/*.Extrabody {*/
+/*    margin: 0 2vw;*/
+/*    padding: 0;*/
+/*    font-family: sans-serif;*/
+/*    text-align: center;*/
+/*}*/
 
 header p {
     font-size: 2rem;
@@ -37,15 +37,15 @@ main a {
     font-size: 1.5rem;
 }
 
-.postImage{
-    width:  90vw;
+.postImage {
+    width: 90vw;
     height: 50vh;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.box{
-    width:  98%;
+.box {
+    width: 98%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -61,8 +61,8 @@ main a {
 
 }
 
-.boxNoImage{
-    width:  98%;
+.boxNoImage {
+    width: 98%;
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -76,30 +76,30 @@ main a {
     background-color: #E0A054;
 }
 
-.textBox{
-    width:  90%;
+.textBox {
+    width: 90%;
 }
 
-.dateTime{
+.dateTime {
     align-self: flex-end;
     margin-right: 5%;
 }
 
-.nameGroupBox{
+.nameGroupBox {
     width: 90%;
     display: flex;
     justify-content: space-between;
 }
 
-.title{
+.title {
     align-self: flex-start;
 }
 
-.group{
+.group {
     align-self: flex-end;
 }
 
-button{
+button {
     padding: 1vh 2vh;
     border-radius: 5px;
     border: none;
@@ -112,7 +112,8 @@ button{
         height: 50vh;
         font-size: 1rem;
     }
-    .postImage{
+
+    .postImage {
         height: 30vh;
     }
 }

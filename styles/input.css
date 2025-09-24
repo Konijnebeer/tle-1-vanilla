@@ -13,6 +13,12 @@
 
 /*hexagon background*/
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #806542;
+}
+
 .hexagon {
     position: absolute;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
