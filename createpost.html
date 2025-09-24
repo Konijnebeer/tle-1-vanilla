@@ -31,6 +31,12 @@
             >
           </label>
         </div>
+        <button
+          id="noImageButton"
+          class="w-full px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          No Image
+        </button>
         <div id="imageContainer" class="hidden">
           <img
             id="uploadedImage"
@@ -39,7 +45,7 @@
             class="w-full h-48 object-cover rounded-lg border border-gray-200 mb-4 aspect-square"
           >
         </div>
-        <div id="titleContainer">
+        <div id="titleContainer" class="hidden">
           <label
             for="title"
             class="block text-sm font-medium text-gray-700"
@@ -51,7 +57,7 @@
             >
           </label>
         </div>
-        <div id="captionContainer">
+        <div id="captionContainer" class="hidden">
           <label
             for="caption"
             class="block text-sm font-medium text-gray-700"
@@ -62,6 +68,15 @@
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
           </label>
+        </div>
+        <div id="postButtonContainer" class="hidden">
+          <button
+            id="postButton"
+            type="button"
+            class="w-full px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            Create Post
+          </button>
         </div>
       </form>
     </main>
