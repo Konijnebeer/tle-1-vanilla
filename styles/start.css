@@ -99,6 +99,14 @@ main a {
     align-self: flex-end;
 }
 
+button{
+    padding: 1vh 2vh;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    background-color: #E0A054;
+}
+
 @media (max-width: 390px) {
     .box {
         height: 50vh;
