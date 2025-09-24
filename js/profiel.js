@@ -1,6 +1,6 @@
 window.addEventListener('load', init)
 
-const url = 'api/profiel.php'
+const url = './api/profiel.php'
 
 function init() {
     ajaxRequest(url, profileSuccessHandler)
