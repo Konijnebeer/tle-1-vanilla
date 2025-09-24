@@ -21,12 +21,6 @@ try {
         throw new Exception('Invalid JSON: ' . json_last_error_msg());
     }
 
-    // Validate required fields
-    if (empty($data['title'])) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Title is required']);
-        exit;
-    }
 
     if (empty($data['caption'])) {
         http_response_code(400);
@@ -34,12 +28,11 @@ try {
         exit;
     }
 
-    $title = trim($data['title']);
     $caption = trim($data['caption']);
     $imageUuid = isset($data['image_uuid']) ? $data['image_uuid'] : null;
 
     // Debug: Log the processed values
-    error_log("Title: $title, Caption: $caption, Image UUID: " . ($imageUuid ?? 'null'));
+    error_log("Caption: $caption, Image UUID: " . ($imageUuid ?? 'null'));
 
     // For now, we'll use hardcoded values for user_id and group_id
     // In a real application, you would get these from session/authentication

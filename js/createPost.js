@@ -3,7 +3,6 @@ window.addEventListener("load", init);
 const url = "./api/createPost.php";
 const uploadUrl = "./api/upload.php?folder=posts";
 let uploadContainer;
-let titleContainer;
 let captionContainer;
 let imageContainer;
 let noImageButton;
@@ -12,7 +11,6 @@ let postButtonContainer;
 let uploadedImageUuid = null; // Store the uploaded image UUID
 
 function init() {
-  titleContainer = document.querySelector("#titleContainer");
   captionContainer = document.querySelector("#captionContainer");
   imageContainer = document.querySelector("#imageContainer");
   postButtonContainer = document.querySelector("#postButtonContainer");
@@ -42,7 +40,6 @@ function noImageButtonClickHandler(e) {
   uploadContainer.classList.add("hidden");
   noImageButton.classList.add("hidden");
 
-  titleContainer.classList.remove("hidden");
   captionContainer.classList.remove("hidden");
   postButtonContainer.classList.remove("hidden");
 }
@@ -78,21 +75,15 @@ function uploadSuccessHandler(data) {
   imageContainer.classList.remove("hidden");
   noImageButton.classList.add("hidden");
 
-  // Show the title and caption fields after successful upload
-  titleContainer.classList.remove("hidden");
+  // Show the caption fields after successful upload
   captionContainer.classList.remove("hidden");
   postButtonContainer.classList.remove("hidden");
 }
 
 function createPost() {
-  const title = document.querySelector("#title").value.trim();
   const caption = document.querySelector("#caption").value.trim();
 
   // Validate required fields
-  // if (!title) {
-  //   alert("Please enter a title for your post");
-  //   return;
-  // }
 
   // if (!caption) {
   //   alert("Please enter a caption for your post");
@@ -105,7 +96,6 @@ function createPost() {
 
   // Prepare the post data
   const postData = {
-    title: title,
     caption: caption,
     image_uuid: uploadedImageUuid, // Will be null if no image was uploaded
   };
