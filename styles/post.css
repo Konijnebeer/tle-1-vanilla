@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #806542;
+}
+
+/*.Extrabody {*/
+/*    margin: 0 2vw;*/
+/*    padding: 0;*/
+/*    font-family: sans-serif;*/
+/*    text-align: center;*/
+/*}*/
+
+header p {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 40vw 5vw 20vw 5vw;
+}
+
+main p {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20vw 0 10vw 0;
+}
+
+.button {
+    text-decoration: none;
+    background-color: black;
+    padding: 3vw 8vw;
+    border-radius: 10px;
+}
+
+main a {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.postImage {
+    width: 90vw;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.box {
+    width: 98%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin: 5vh auto 5vh auto;
+    /*border: 2px solid #5D6B59;*/
+    border: 4px solid #bf8b48;
+    border-radius: 10px;
+    padding: 10px 0;
+    background-color: #E0A054;
+
+}
+
+.boxNoImage {
+    width: 98%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin: 5vh auto 5vh auto;
+    border: 4px solid #bf8b48;
+    border-radius: 10px;
+    padding: 10px 0;
+    background-color: #E0A054;
+}
+
+.textBox {
+    width: 90%;
+}
+
+.dateTime {
+    align-self: flex-end;
+    margin-right: 5%;
+}
+
+.nameGroupBox {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    align-self: flex-start;
+}
+
+.group {
+    align-self: flex-end;
+}
+
+button {
+    padding: 1vh 2vh;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    background-color: #E0A054;
+}
+
+@media (max-width: 390px) {
+    .box {
+        height: 50vh;
+        font-size: 1rem;
+    }
+
+    .postImage {
+        height: 30vh;
+    }
+}
