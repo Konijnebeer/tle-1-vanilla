@@ -10,14 +10,14 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$user = $_SESSION['user'];
+$userId = $_SESSION['user']['id'];
 
 // Haal PDO via de Database
 $db = Database::getInstance();
 $pdo = $db->getConnection();
 
 // Haal profielgegevens op
-$profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE email = ?', [$user]);
+$profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE id = ?', [$userId]);
 
 if ($profiel) {
     echo json_encode($profiel);
