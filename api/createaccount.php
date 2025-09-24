@@ -1,7 +1,7 @@
 <?php
-/** @var $db mysqli */
+/** @var $db mysqli *///
 if (isset($_POST['email'])) {
-    require_once('../includes/database.php'); // adjust path if needed
+    require_once('./includes/database.php'); // adjust path if needed
 
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $username = mysqli_real_escape_string($db, $_POST['username']);
