@@ -30,8 +30,8 @@ if (isset($_POST['submit'])) {
         $db = Database::getInstance();
         $user = $db->fetch("SELECT password_hash, username, id FROM users WHERE email = ?", [$email]);
 
-        // Check if the provided password matches the stored password in the database
-        if (password_verify($password, $user['password_hash'])) {
+        // Check if user exists first, then verify password
+        if ($user && password_verify($password, $user['password_hash'])) {
 
             // Get all groups the user is part of
             $groups = $db->fetchAll("SELECT g.id FROM `groups` g INNER JOIN user_group ug ON g.id = ug.group_id WHERE ug.user_id = ?", [$user['id']]);
@@ -46,10 +46,10 @@ if (isset($_POST['submit'])) {
             ];
 
             // Redirect to secure page
-            header('Location: profiel.php');
+            header('Location: ../profiel.html');
             exit();
         } else {
-            // Credentials not valid
+            // Credentials not valid or user doesn't exist
             $errors['loginFailed'] = 'Email/password incorrect';
         }
         //error incorrect log in
