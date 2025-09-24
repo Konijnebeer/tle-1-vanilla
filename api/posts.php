@@ -6,19 +6,26 @@ if (isset($_GET['action'])) {
     if ($action === 'getall') {
         try {
             $db = Database::getInstance();
-            $posts = $db->fetchAll("
+            $groupIds = [1, 2, 3, 4,5]; // Example, can be any length
+
+            $placeholders = implode(',', array_fill(0, count($groupIds), '?'));
+            $sql = "
 SELECT 
     posts.id,
     users.username,
     posts.group_id,
-    CONCAT('/images/', images.id, '.', images.extension) AS image_path,
+    images.path AS image_path,
     posts.text_content,
-    posts.created_at
+    posts.created_at,
+    images.name
 FROM posts
 JOIN users ON posts.user_id = users.id
-JOIN images ON posts.image_id = images.id
-WHERE posts.group_id IN (?, ?, ?)
-",[1,2,3]);
+LEFT JOIN images ON posts.image_id = images.id
+WHERE posts.group_id IN ($placeholders)
+";
+
+            $posts = $db->fetchAll($sql, $groupIds);
+            //    CONCAT('/images/', images.name, '.', images.extension) AS image_path,
             $data = ['posts' => $posts];
         } catch (Exception $e) {
             $data = ['error' => 'Failed to fetch posts'];
