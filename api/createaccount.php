@@ -1,34 +1,33 @@
 <?php
-/** @var $db mysqli */
 if (isset($_POST['email'])) {
-    require_once('../includes/database.php'); // adjust path if needed
-
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
+    
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $phoneNumber = $_POST['phoneNumber'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
-
+    
     $errors = [];
-
+    
     if ($password !== $confirmPassword) {
         $errors['confirm_password'] = "Wachtwoorden komen niet overeen";
     }
-
+    
     if (empty($errors)) {
+        require_once('./includes/database.php'); // adjust path if needed
         $securePassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (email, username, phone_number, password_hash)
-                  VALUES ('$email', '$username', '$phoneNumber', '$securePassword')";
+        // Get database connection
+        $db = Database::getInstance();
 
-        $result = mysqli_query($db, $query);
+        // Insert the post
+        $result = $db->insert("INSERT INTO users (email, username, phone_number, password_hash)VALUES (?, ?, ?, ?)", [$email, $username, $phoneNumber, $securePassword]);
 
         if ($result) {
-            mysqli_close($db);
             header('Location: ../start.html');
             exit();
         } else {
-            die('Error: ' . mysqli_error($db));
+            die('Error: ' . 'something went horribly wrong');
         }
     } else {
         echo json_encode(['errors' => $errors]);

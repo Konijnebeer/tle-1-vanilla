@@ -1,5 +1,6 @@
 <?php
-require_once 'includes/database.php';
+session_start();
+require_once './includes/database.php';
 
 header('Content-Type: application/json');
 
@@ -10,10 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Check if user is logged in
+if (!isset($_SESSION['user'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Not authenticated']);
+    exit;
+}
+
 try {
     // Get the JSON input
     $input = file_get_contents('php://input');
-
     $data = json_decode($input, true);
 
     // Check if JSON parsing failed
@@ -21,47 +28,46 @@ try {
         throw new Exception('Invalid JSON: ' . json_last_error_msg());
     }
 
-
-    if (empty($data['caption'])) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Caption is required']);
-        exit;
-    }
-
-    $caption = trim($data['caption']);
+    // Validate caption (allow empty captions)
+    $caption = isset($data['caption']) ? trim($data['caption']) : '';
     $imageUuid = isset($data['image_uuid']) ? $data['image_uuid'] : null;
 
-    // Debug: Log the processed values
-    error_log("Caption: $caption, Image UUID: " . ($imageUuid ?? 'null'));
-
-    // For now, we'll use hardcoded values for user_id and group_id
-    // In a real application, you would get these from session/authentication
-    $userId = 1; // Hardcoded user ID - replace with actual user authentication
-    $groupId = 1; // Hardcoded group ID - replace with actual group selection
+    // Get user info from session
+    $userId = $_SESSION['user']['id'];
+    
+    // For now, use the first group the user belongs to, or null if no groups
+    $groupId = !empty($_SESSION['user']['groups']) ? $_SESSION['user']['groups'][0] : null;
 
     // Get database connection
     $db = Database::getInstance();
-    $postID = $db->insert("
-            INSERT INTO posts (user_id, group_id, image_id, text_content) 
-            VALUES (?, ?, ?, ?)
-        ", [
+    
+    // Insert the post
+    $postId = $db->insert("
+        INSERT INTO posts (user_id, group_id, image_id, text_content, created_at) 
+        VALUES (?, ?, ?, ?, NOW())
+    ", [
         $userId,
         $groupId,
         $imageUuid,
         $caption
     ]);
+
     // If an image was uploaded, update the images table to mark it as posted
     if ($imageUuid) {
-        $db->update("UPDATE images SET posted = 1 WHERE id = ?", [$imageUuid]);
-    };
+        $db->query("UPDATE images SET posted = 1 WHERE id = ?", [$imageUuid]);
+    }
 
-    // Response
+    // Return success response
     echo json_encode([
         'success' => true,
         'post_id' => $postId,
         'message' => 'Post created successfully'
     ]);
+
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Failed to create post: ' . $e->getMessage()]);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Failed to create post: ' . $e->getMessage()
+    ]);
 }

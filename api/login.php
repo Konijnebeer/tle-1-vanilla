@@ -30,8 +30,8 @@ if (isset($_POST['submit'])) {
         $db = Database::getInstance();
         $user = $db->fetch("SELECT password_hash, username, id FROM users WHERE email = ?", [$email]);
 
-        // Check if the provided password matches the stored password in the database
-        if (password_verify($password, $user['password_hash'])) {
+        // Check if user exists first, then verify password
+        if ($user && password_verify($password, $user['password_hash'])) {
 
             // Get all groups the user is part of
             $groups = $db->fetchAll("SELECT g.id FROM `groups` g INNER JOIN user_group ug ON g.id = ug.group_id WHERE ug.user_id = ?", [$user['id']]);
@@ -46,10 +46,10 @@ if (isset($_POST['submit'])) {
             ];
 
             // Redirect to secure page
-            header('Location: profiel.php');
+            header('Location: ../home.html');
             exit();
         } else {
-            // Credentials not valid
+            // Credentials not valid or user doesn't exist
             $errors['loginFailed'] = 'Email/password incorrect';
         }
         //error incorrect log in
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="styles/login.css">
 
     <title>Log in</title>
 </head>
@@ -140,7 +140,7 @@ if (isset($_POST['submit'])) {
                             </button>
                         </div>
                     </div>
-
+                    <a class="button" href="../createaccount.html">Create Acount</a>
                     <a class="button" href="../start.html">&laquo; Go back to START</a>
                 </form>
             </section>
