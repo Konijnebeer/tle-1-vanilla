@@ -1,5 +1,4 @@
 <?php
-/** @var $db mysqli *///
 if (isset($_POST['email'])) {
     
     $email = $_POST['email'];
@@ -18,7 +17,7 @@ if (isset($_POST['email'])) {
         require_once('./includes/database.php'); // adjust path if needed
         $securePassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $ // Get database connection
+        // Get database connection
         $db = Database::getInstance();
 
         // Insert the post
