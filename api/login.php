@@ -11,14 +11,14 @@ $login = false;
 if (isset($_POST['submit'])) {
 
     // Get form data
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password_hash'];
 
     // Server-side validation
     $errors = [];
 
-    if ($username == '') {
-        $errors['username'] = 'Username cannot be empty';
+    if ($email == '') {
+        $errors['email'] = 'email cannot be empty';
     }
 
     if ($password == '') {
@@ -28,29 +28,34 @@ if (isset($_POST['submit'])) {
     // If data valid
     if (empty($errors)) {
         $db = Database::getInstance();
-        $user = $db->fetch("SELECT password_hash FROM users WHERE email = ?", [$username]);
-//        $data = ['users' => $user];
-//        print_r($data);
-//
+        $user = $db->fetch("SELECT password_hash, username, id FROM users WHERE email = ?", [$email]);
+
         // Check if the provided password matches the stored password in the database
         if (password_verify($password, $user['password_hash'])) {
-//                echo 'password correct';
-//                exit;
 
-            // Store the user in the session
-            $_SESSION['user'] = $username;
+            // Get all groups the user is part of
+            $groups = $db->fetchAll("SELECT g.id FROM `groups` g INNER JOIN user_group ug ON g.id = ug.group_id WHERE ug.user_id = ?", [$user['id']]);
+            $groupIds = array_column($groups, 'id');
+            
+            // Store comprehensive user data in session
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'email' => $email,
+                'groups' => $groupIds
+            ];
 
             // Redirect to secure page
             header('Location: profiel.php');
             exit();
         } else {
             // Credentials not valid
-            $errors['loginFailed'] = 'Username/password incorrect';
+            $errors['loginFailed'] = 'Email/password incorrect';
         }
         //error incorrect log in
     } else {
         // User doesn't exist
-        $errors['loginFailed'] = 'Username/password incorrect';
+        $errors['loginFailed'] = 'Email/password incorrect';
     }
     //error incorrect log in
 
@@ -91,12 +96,12 @@ if (isset($_POST['submit'])) {
                         <div class="field-body">
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    <input class="input" id="username" type="text" name="username"
-                                           value="<?= htmlentities($username ?? '') ?>"/>
+                                    <input class="input" id="email" type="text" name="email"
+                                           value="<?= htmlentities($email ?? '') ?>"/>
                                     <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                 </div>
                                 <p class="help is-danger">
-                                    <?= $errors['username'] ?? '' ?>
+                                    <?= $errors['email'] ?? '' ?>
                                 </p>
                             </div>
                         </div>
