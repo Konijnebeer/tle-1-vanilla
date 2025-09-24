@@ -140,8 +140,8 @@ if (isset($_POST['submit'])) {
                             </button>
                         </div>
                     </div>
-
-                    <a class="button" href="start.html">&laquo; Go back to START</a>
+                    <a class="button" href="../createaccount.html">Create Acount</a>
+                    <a class="button" href="../start.html">&laquo; Go back to START</a>
                 </form>
             </section>
 
