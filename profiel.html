@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Profielpagina</title>
-    <script src="js/profiel.js" defer></script>
-</head>
-<body>
-<h1>Welkom op je profielpagina</h1>
-<div id="profiel"></div>
-<p><a href="api/login.php">Uitloggen</a></p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        >
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="styles/output.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+            rel="stylesheet"
+        >
+        <title>Profiel</title>
+        <script src="js/profiel.js" defer></script>
+    </head>
+    <body class="bg-[#E0A054]">
+        <header class="flex flex-col items-center mt-8">
+            <img src="icons/Logo-ENA.jpg" alt="ENA Logo" class="w-16 h-16 mb-2">
+            <h1 class="text-2xl font-bold font-audiowide">Profiel</h1>
+        </header>
+        <main
+            class="min-h-screen flex flex-col items-center justify-center space-y-6 px-4"
+        >
+            <div class="bg-[#B18A5E] p-8 rounded-xl shadow-lg max-w-md w-full">
+                <h2 class="text-xl font-bold text-center mb-6 font-audiowide">
+                    Gebruikersprofiel
+                </h2>
+                <div id="profiel" class="space-y-4 text-center"></div>
+            </div>
+            <div class="flex space-x-4">
+                <a
+                    href="home.html"
+                    class="bg-[#B18A5E] hover:bg-gray-500 text-black px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105"
+                >
+                    Terug naar Home
+                </a>
+                <a
+                    href="api/logout.php"
+                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105"
+                >
+                    Uitloggen
+                </a>
+            </div>
+        </main>
+    </body>
 </html>

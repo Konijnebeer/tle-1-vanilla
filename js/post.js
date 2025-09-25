@@ -31,10 +31,33 @@ function success(data) {
             nameAndGroupBox.appendChild(title)
 
             const group = document.createElement('p')
-            group.innerHTML = `${post.group_id}`
-            group.classList.add('group')
-            nameAndGroupBox.appendChild(group)
-            div.appendChild(nameAndGroupBox)
+
+            //Delete the whole switch case when we can pull the data from the database
+            let groupName;
+            switch (post.group_id) {
+                case 1:
+                    groupName = "Photography Enthusiasts";
+                    break;
+                case 2:
+                    groupName = "Tech Discussions";
+                    break;
+                case 3:
+                    groupName = "Travel Adventures";
+                    break;
+                case 4:
+                    groupName = "Local Community";
+                    break;
+                case 5:
+                    groupName = "Book Club";
+                    break;
+                default:
+                    groupName = `Group ${post.group_id}`;
+            }
+
+            group.innerHTML = groupName;
+            group.classList.add('group');
+            nameAndGroupBox.appendChild(group);
+            div.appendChild(nameAndGroupBox);
 
         const image = document.createElement('img')
             if (post.image_path !== null){

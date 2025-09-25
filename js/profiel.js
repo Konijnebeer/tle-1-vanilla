@@ -1,24 +1,27 @@
-window.addEventListener('load', init)
+window.addEventListener("load", init);
 
-const url = './api/profiel.php'
+const url = "./api/profiel.php";
 
 function init() {
-    ajaxRequest(url, profileSuccessHandler)
+    ajaxRequest(url, profileSuccessHandler);
 }
 function profileSuccessHandler(data) {
-    console.log(data)
-    const container = document.getElementById('profiel');
-            if (data.error) {
-            container.innerHTML = `<p>${data.error}</p>`;
-        } else {
-            container.innerHTML = `
-                <p><strong>Gebruikersnaam:</strong> ${data.username}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Telefoonnummer:</strong> ${data.phone_number}</p>
-                <p><strong>Aangemaakt op:</strong> ${data.created_at}</p>
-                <p><strong>Bijgewerkt op:</strong> ${data.updated_at}</p>
-            `;
-        }
+    console.log(data);
+    const container = document.getElementById("profiel");
+    if (data.error) {
+        container.innerHTML =
+            `<p class="text-red-600 font-semibold">${data.error}</p>`;
+    } else {
+        container.innerHTML = `
+            <div class="space-y-3">
+                <p><strong class="text-gray-800">Gebruikersnaam:</strong> <span class="text-gray-700">${data.username}</span></p>
+                <p><strong class="text-gray-800">Email:</strong> <span class="text-gray-700">${data.email}</span></p>
+                <p><strong class="text-gray-800">Telefoonnummer:</strong> <span class="text-gray-700">${data.phone_number}</span></p>
+                <p><strong class="text-gray-800">Aangemaakt op:</strong> <span class="text-gray-700">${data.created_at}</span></p>
+                <p><strong class="text-gray-800">Bijgewerkt op:</strong> <span class="text-gray-700">${data.updated_at}</span></p>
+            </div>
+        `;
+    }
 }
 
 function ajaxRequest(url, successCallback) {
@@ -35,6 +38,7 @@ function ajaxRequest(url, successCallback) {
 
 function ajaxRequestErrorHandler(error) {
     console.error("Error:", error);
-    document.getElementById('profiel').innerHTML = `<p>Fout bij laden van profiel: ${error}</p>`;
+    document.getElementById("profiel").innerHTML =
+        `<p class="text-red-600 font-semibold">Fout bij laden van profiel: ${error}</p>`;
     alert("An error occurred while fetching data. Please try again later.");
 }
