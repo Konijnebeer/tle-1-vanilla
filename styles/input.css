@@ -20,7 +20,7 @@ body {
 }
 
 .hexagon {
-    position: absolute;
+    position: fixed;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     transition: transform 0.3s ease;
     z-index: -1;

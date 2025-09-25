@@ -3,15 +3,15 @@ body {
     padding: 0;
     font-family: sans-serif;
     text-align: center;
-    background-color: #806542;
-}
+background-color: #F5F5DC;}
 
-/*.Extrabody {*/
-/*    margin: 0 2vw;*/
-/*    padding: 0;*/
-/*    font-family: sans-serif;*/
-/*    text-align: center;*/
-/*}*/
+.Extrabody {
+    margin: 0 2vw;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #F5F5DC;
+}
 
 header p {
     font-size: 2rem;
