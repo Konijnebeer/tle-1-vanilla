@@ -1,0 +1,189 @@
+/* Create Post Page Specific Styles - Matching Start Page Design */
+
+/* Override body font to use standard font instead of Audiowide */
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+}
+
+/* Keep special font only for header */
+header p {
+    font-family: "Audiowide", sans-serif;
+}
+
+/* Form styling to match the start page theme */
+.create-post-form {
+    background: rgba(
+        245,
+        233,
+        221,
+        0.9
+    ); /* Matching start page background with transparency */
+    border: 3px solid #e6b450; /* Matching button color */
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(62, 44, 35, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+/* Adjust main content positioning */
+main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Form elements styling */
+.create-post-form label {
+    color: #3e2c23;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.create-post-form input[type="file"],
+.create-post-form input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #8da76f;
+    border-radius: 10px;
+    color: #3e2c23;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+}
+
+.create-post-form input[type="file"]:focus,
+.create-post-form input[type="text"]:focus {
+    border-color: #d97b66;
+    box-shadow: 0 0 0 3px rgba(217, 123, 102, 0.2);
+}
+
+/* Button styling to match start page */
+#noImageButton {
+    background-color: #8da76f;
+    color: #3e2c23;
+    border: 2px solid #3e2c23;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+#noImageButton:hover {
+    background-color: #d97b66;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(62, 44, 35, 0.3);
+}
+
+#postButton {
+    background-color: #e6b450;
+    color: #3e2c23;
+    border: 2px solid #3e2c23;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+#postButton:hover {
+    background-color: #d97b66;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(62, 44, 35, 0.4);
+}
+
+#postButton:disabled {
+    background-color: #b18a5e;
+    color: rgba(62, 44, 35, 0.6);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Image preview styling */
+#uploadedImage {
+    border: 3px solid #8da76f;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(62, 44, 35, 0.2);
+}
+
+/* File input custom styling */
+.create-post-form input[type="file"]::file-selector-button {
+    background-color: #e6b450;
+    color: #3e2c23;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
+    font-weight: 500;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-post-form input[type="file"]::file-selector-button:hover {
+    background-color: #d97b66;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .create-post-form {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    header p {
+        font-size: 1.5rem;
+        padding: 20vw 5vw 10vw 5vw;
+    }
+}
