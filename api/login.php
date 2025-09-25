@@ -74,12 +74,11 @@ if (isset($_POST['submit'])) {
     <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">-->
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/input.css">
-
     <script type="text/javascript" src="../js/hex-background.js"></script>
 
     <title>Log in</title>
 </head>
-<body>
+<body class="bg-color">
 
 <div class="hexagon hex-large-one"></div>
 <div class="hexagon hex-large-two"></div>
