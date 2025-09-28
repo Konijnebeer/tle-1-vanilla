@@ -57,9 +57,6 @@ if (isset($_POST['submit'])) {
         // User doesn't exist
         $errors['loginFailed'] = 'Email/password incorrect';
     }
-    //error incorrect log in
-
-    //    }
 }
 ?>
 
