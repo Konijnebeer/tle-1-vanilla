@@ -1,12 +1,17 @@
+import { requireLogin } from "./utils/acount.js"
+import { ajaxRequestGET } from './utils/fetch.js'
 window.addEventListener("load", init);
 
 const url = "./api/profiel.php";
 
 function init() {
-    ajaxRequest(url, profileSuccessHandler);
+    // check if the user is logged in
+    requireLogin()
+    // fetch user info
+    ajaxRequestGET(url, profileSuccessHandler, ajaxRequestErrorHandler)
 }
 function profileSuccessHandler(data) {
-    console.log(data);
+    // console.log(data);
     const container = document.getElementById("profiel");
     if (data.error) {
         container.innerHTML =
@@ -22,18 +27,6 @@ function profileSuccessHandler(data) {
             </div>
         `;
     }
-}
-
-function ajaxRequest(url, successCallback) {
-    fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-            return response.json();
-        })
-        .then((data) => successCallback(data))
-        .catch((error) => ajaxRequestErrorHandler(error));
 }
 
 function ajaxRequestErrorHandler(error) {

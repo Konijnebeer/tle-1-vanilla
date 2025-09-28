@@ -1,42 +1,56 @@
 <?php
-require_once 'includes/database.php';
-
-// Enable error reporting for debugging
-if (defined('ENVIRONMENT') && ENVIRONMENT === 'development') {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-}
-
-header('Content-Type: application/json');
+require_once './utils/response.php';
+require_once './includes/database.php';
 
 try {
     // Get folder parameter from URL, default to 'images'
     $folder = $_GET['folder'] ?? 'images';
 
     // Check if file was uploaded
-    if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
-        http_response_code(400);
-        echo json_encode(['error' => 'No file uploaded or upload error']);
-        exit;
+    if (!isset($_FILES['file'])) {
+        sendError('No file was selected', 400);
     }
 
     $file = $_FILES['file'];
+
+    // Check for upload errors
+    switch ($file['error']) {
+        case UPLOAD_ERR_OK:
+            break;
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            sendError('File is too large. Maximum file size is 2MB', 400);
+        case UPLOAD_ERR_PARTIAL:
+            sendError('File upload was interrupted', 400);
+        case UPLOAD_ERR_NO_FILE:
+            sendError('No file was selected', 400);
+        case UPLOAD_ERR_NO_TMP_DIR:
+            sendError('Server error: temporary folder missing', 500);
+        case UPLOAD_ERR_CANT_WRITE:
+            sendError('Server error: cannot write file', 500);
+        case UPLOAD_ERR_EXTENSION:
+            sendError('File upload blocked by server extension', 400);
+        default:
+            sendError('Unknown upload error', 500);
+    }
+
+    // Additional file size check (2MB limit)
+    $maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+    if ($file['size'] > $maxFileSize) {
+        sendError('File is too large. Maximum file size is 2MB', 400);
+    }
     $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
 
     // Validate file type
     if (!in_array($file['type'], $allowedTypes)) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Invalid file type. Only JPG, PNG, WebP and GIF are allowed']);
-        exit;
+        sendError('Invalid file type. Only JPG, PNG, WebP and GIF are allowed', 400);
     }
 
     // Get file extension
     $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     if (!in_array($fileExtension, $allowedExtensions)) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Invalid file extension']);
-        exit;
+        sendError('Invalid file extension', 400);
     }
 
     // Normalize extension for database
@@ -61,7 +75,7 @@ try {
     $uploadDir = '../images/' . $folder . '/';
     if (!is_dir($uploadDir)) {
         if (!mkdir($uploadDir, 0755, true)) {
-            throw new Exception('Failed to create upload directory');
+            sendError('Failed to create upload directory', 500);
         }
     }
 
@@ -71,38 +85,39 @@ try {
 
     // Move uploaded file
     if (!move_uploaded_file($file['tmp_name'], $filePath)) {
-        throw new Exception('Failed to move uploaded file');
+        sendError('Failed to move uploaded file', 500);
     }
 
-    // Save to database
+    // Save to database using new database methods
     $db = Database::getInstance();
-    $conn = $db->getConnection();
 
-    $stmt = $conn->prepare("INSERT INTO images (id, path, name, extension, posted) VALUES (?, ?, ?, ?, ?)");
-    $success = $stmt->execute([
-        $uuid,
-        'images/' . $folder . '/' . $fileName,
-        $file['name'],
-        $fileExtension,
-        0 // Use 0 instead of false for boolean in database
-    ]);
+    try {
+        $insertedId = $db->createRecord(
+            "INSERT INTO images (id, path, name, extension, posted) VALUES (?, ?, ?, ?, ?)",
+            [
+                $uuid,
+                'images/' . $folder . '/' . $fileName,
+                $file['name'],
+                $fileExtension,
+                0
+            ]
+        );
 
-    if (!$success) {
-        throw new Exception('Failed to save image to database');
+        // createRecord returns the ID, so if we get here without exception, it worked
+
+    } catch (Exception $e) {
+        sendError('Failed to save image to database: ' . $e->getMessage(), 500);
     }
 
-    // Return success response with UUID
-    echo json_encode([
-        'success' => true,
+    // Return success response using response utility
+    sendSuccess([
         'uuid' => $uuid,
         'filename' => $fileName,
         'folder' => $folder,
         'original_name' => $file['name']
     ]);
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Upload failed: ' . $e->getMessage()]);
+    sendError('Upload failed: ' . $e->getMessage(), 500);
 } catch (Error $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'PHP Error: ' . $e->getMessage()]);
+    sendError('PHP Error: ' . $e->getMessage(), 500);
 }

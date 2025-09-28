@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="styles/output.css">
     <link rel="stylesheet" href="styles/start.css">
     <link rel="stylesheet" href="styles/createpost.css">
-    <script type="text/javascript" src="js/createPost.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    >
+
     <script type="text/javascript" src="js/hex-background.js"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=DM+Serif+Text:ital@0;1&family=Press+Start+2P&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-    </style>
+    <script type="module" src="js/createPost.js" defer></script>
 
     <title>Create Post</title>
   </head>
@@ -27,8 +32,9 @@
 
     <header>
       <div class="back-button-container">
-        <a href="post.html" class="back-button">← Back</a>
+        <a href="post.html" class="back-button">Back</a>
       </div>
+      <h1>ENA</h1>
       <p>Create Your Post</p>
     </header>
     <main class="flex justify-center items-center min-h-screen">
@@ -62,6 +68,19 @@
             class="w-full h-48 object-cover rounded-lg border border-gray-200 mb-4 aspect-square"
           >
         </div>
+        <div id="groupContainer" class="hidden">
+          <label
+            for="group"
+            class="block text-sm font-medium text-gray-700"
+          >Select Group
+            <select
+              id="group"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">Loading groups...</option>
+            </select>
+          </label>
+        </div>
         <div id="captionContainer" class="hidden">
           <label
             for="caption"
@@ -86,8 +105,7 @@
       </form>
     </main>
     <footer>
-      <div class="wave-bottom"></div>
-      <div class="wave-accent"></div>
+      <p>Copyright 2025 - TLE1 Team 3</p>
     </footer>
   </body>
 </html>

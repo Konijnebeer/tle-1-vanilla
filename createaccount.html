@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
 
-    <script type="text/javascript" src="js/createaccount.js" defer></script>
-    <script type="text/javascript" src="js/hex-background.js"></script>
+          <script type="text/javascript" src="js/hex-background.js"></script>
+          <script type="module" src="js/createaccount.js" defer></script>
 
     <title>Maak Account Aan</title>
 </head>
@@ -30,6 +30,39 @@
 <main>
     <section id="create-account">
         <h2>Maak een account aan</h2>
+        <form id="accountForm" class="form-container">
+            <label for="email">Email:</label>
+            <br>
+            <input type="email" name="email" id="email" required>
+            <div class="error-message" id="error-email"></div>
+            <br>
+            
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" name="username" id="username" required>
+            <div class="error-message" id="error-username"></div>
+            <br>
+            
+            <label for="phoneNumber">Telefoonnummer:</label>
+            <br>
+            <input type="tel" name="phoneNumber" id="phoneNumber" required>
+            <div class="error-message" id="error-phoneNumber"></div>
+            <br>
+            
+            <label for="password">Wachtwoord:</label>
+            <br>
+            <input type="password" name="password" id="password" required>
+            <div class="error-message" id="error-password"></div>
+            <br>
+            
+            <label for="confirm_password">Wachtwoord bevestigen:</label>
+            <br>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+            <div class="error-message" id="error-confirm_password"></div>
+            <br>
+            
+            <button type="submit">Create Account</button>
+        </form>
     </section>
 </main>
 <footer>

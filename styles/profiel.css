@@ -94,7 +94,7 @@ main {
     box-shadow: 0 8px 32px rgba(62, 44, 35, 0.2);
     padding: 1.5rem;
     max-width: 28rem;
-    width: 100%;
+    /* width: 100%; */
     position: relative;
     z-index: 2;
 }

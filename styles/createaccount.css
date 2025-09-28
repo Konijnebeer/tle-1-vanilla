@@ -8,6 +8,13 @@
     font-style: normal;
 }
 
+.error-message {
+    color: #ff4444;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
 .raleway-regular {
     font-family: "Raleway", sans-serif;
     font-weight: 400;

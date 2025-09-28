@@ -32,6 +32,5 @@ function ajaxRequest(url, successCallback) {
 
 function ajaxRequestErrorHandler(error) {
     console.error("Error:", error);
-    // On error, redirect to login as fallback
-    window.location.href = 'api/login.php';
+    alert("An error occurred while fetching data. Please try again later.");
 }

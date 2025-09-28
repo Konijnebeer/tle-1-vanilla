@@ -3,14 +3,15 @@ body {
     padding: 0;
     font-family: sans-serif;
     text-align: center;
-background-color: #F5F5DC;}
+    background-color: #f5f5dc;
+}
 
 .Extrabody {
     margin: 0 2vw;
     padding: 0;
     font-family: sans-serif;
     text-align: center;
-    background-color: #F5F5DC;
+    background-color: #f5f5dc;
 }
 
 header p {
@@ -19,11 +20,11 @@ header p {
     padding: 40vw 5vw 20vw 5vw;
 }
 
-main p {
+/* main p {
     font-size: 2rem;
     font-weight: bold;
     padding: 20vw 0 10vw 0;
-}
+} */
 
 .button {
     text-decoration: none;
@@ -57,8 +58,7 @@ main a {
     border: 4px solid #bf8b48;
     border-radius: 10px;
     padding: 10px 0;
-    background-color: #E0A054;
-
+    background-color: #e0a054;
 }
 
 .boxNoImage {
@@ -73,16 +73,22 @@ main a {
     border: 4px solid #bf8b48;
     border-radius: 10px;
     padding: 10px 0;
-    background-color: #E0A054;
+    background-color: #e0a054;
 }
 
 .textBox {
     width: 90%;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 1em;
 }
 
 .dateTime {
     align-self: flex-end;
     margin-right: 5%;
+    font-size: 0.9rem;
+    color: #c0492e;
+    font-weight: bold;
 }
 
 .nameGroupBox {
@@ -93,10 +99,16 @@ main a {
 
 .title {
     align-self: flex-start;
+    font-size: 1.2rem;
+    margin: 0.2em 0em;
 }
 
 .group {
     align-self: flex-end;
+    font-size: 1rem;
+    color: #c0492e;
+    font-weight: bold;
+    margin: 0.2em 0em;
 }
 
 button {
@@ -104,7 +116,17 @@ button {
     border-radius: 5px;
     border: none;
     font-weight: bold;
-    background-color: #E0A054;
+    background-color: #e0a054;
+}
+
+.loading, .no-posts, .error {
+    font-size: 1.2rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.error {
+    color: #d32f2f;
 }
 
 @media (max-width: 390px) {

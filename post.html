@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-    <script type="text/javascript" src="js/post.js" defer></script>
+    <title>Posts - ENA</title>
+    <script type="module" src="js/post.js" defer></script>
     <link href="styles/post.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
-<header>
-    <h1>Postfeed</h1>
-    <a href="home.html"><button>Terug naar Homepage</button></a>
-    <a href="createpost.html"><button>Create a Post</button></a>
-</header>
 <body class="Extrabody">
 <script type="text/javascript" src="js/hex-background.js"></script>
 <div class="hexagon hex-large-one"></div>
@@ -19,6 +18,27 @@
 <div class="hexagon hex-medium-one"></div>
 <div class="hexagon hex-small-one"></div>
 <div class="hexagon hex-small-two"></div>
-<section id="field"></section>
+
+<header>
+    <div class="flex items-center justify-center my-4">
+        <img src="icons/Logo-ENA.jpg" alt="ENA Logo" class="w-12 h-12 mr-3">
+        <h1 class="font-audiowide text-2xl">Postfeed</h1>
+    </div>
+    <nav class="flex justify-center space-x-4">
+        <a href="home.html">
+            <button>Home</button>
+        </a>
+        <a href="createpost.html">
+            <button>Create Post</button>
+        </a>
+    </nav>
+</header>
+
+<main>
+    <section id="field">
+        <p class="loading">Loading posts...</p>
+    </section>
+</main>
+
 </body>
 </html>

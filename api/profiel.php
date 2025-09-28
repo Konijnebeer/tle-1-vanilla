@@ -1,28 +1,29 @@
 <?php
-session_start();
-header('Content-Type: application/json');
-
+require_once './utils/acount.php';
 require_once './includes/database.php';
+require_once './utils/response.php';
 
-// Controleer of gebruiker is ingelogd
-if (!isset($_SESSION['user'])) {
-    echo json_encode(['error' => 'Niet ingelogd']);
-    exit;
-}
+// Check authentication using the utility function
+requireAuth();
 
-$userId = $_SESSION['user']['id'];
+// Get user ID from session
+$userId = getCurrentUserId();
 
-// Haal PDO via de Database
-$db = Database::getInstance();
-$pdo = $db->getConnection();
+try {
+    // Get database instance
+    $db = Database::getInstance();
 
-// Haal profielgegevens op
-$profiel = $db->fetch('SELECT email, username, phone_number, created_at, updated_at FROM users WHERE id = ?', [$userId]);
-// print_r($profiel);
-// exit;
+    // Fetch profile data
+    $profiel = $db->getRow(
+        'SELECT email, username, phone_number, created_at, updated_at FROM users WHERE id = ?',
+        [$userId]
+    );
 
-if ($profiel) {
-    echo json_encode($profiel);
-} else {
-    echo json_encode(['error' => 'Geen profielgegevens gevonden']);
+    if ($profiel) {
+        sendSuccess($profiel); // Use the response utility
+    } else {
+        sendNotFound('Geen profielgegevens gevonden');
+    }
+} catch (Exception $e) {
+    sendError('Database error: ' . $e->getMessage());
 }

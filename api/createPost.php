@@ -1,22 +1,19 @@
 <?php
-session_start();
+require_once './utils/response.php';
+require_once './utils/acount.php';
 require_once './includes/database.php';
 
-header('Content-Type: application/json');
-
-// Only allow POST requests
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
+// Only allow PUT requests
+if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
+    sendError('Method not allowed', 405);
 }
 
-// Check if user is logged in
-if (!isset($_SESSION['user'])) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Not authenticated']);
-    exit;
-}
+// Check authentication using the utility function
+requireAuth();
+
+// Get user ID from session
+$userId = getCurrentUserId();
+$user = getCurrentUser();
 
 try {
     // Get the JSON input
@@ -25,24 +22,27 @@ try {
 
     // Check if JSON parsing failed
     if (json_last_error() !== JSON_ERROR_NONE) {
-        throw new Exception('Invalid JSON: ' . json_last_error_msg());
+        sendError('Invalid JSON: ' . json_last_error_msg(), 400);
     }
 
     // Validate caption (allow empty captions)
     $caption = isset($data['caption']) ? trim($data['caption']) : '';
     $imageUuid = isset($data['image_uuid']) ? $data['image_uuid'] : null;
+    $selectedGroupId = isset($data['group_id']) ? (int)$data['group_id'] : null;
 
-    // Get user info from session
-    $userId = $_SESSION['user']['id'];
-    
-    // For now, use the first group the user belongs to, or null if no groups
-    $groupId = !empty($_SESSION['user']['groups']) ? $_SESSION['user']['groups'][0] : null;
+    // Validate that user belongs to the selected group
+    if ($selectedGroupId && !userHasGroup($selectedGroupId)) {
+        sendError('You are not a member of the selected group', 403);
+    }
+
+    // Use selected group or default to first group if none selected
+    $groupId = $selectedGroupId ?: (!empty($user['groups']) ? $user['groups'][0] : null);
 
     // Get database connection
     $db = Database::getInstance();
     
-    // Insert the post
-    $postId = $db->insert("
+    // Insert the post using new database method
+    $postId = $db->createRecord("
         INSERT INTO posts (user_id, group_id, image_id, text_content, created_at) 
         VALUES (?, ?, ?, ?, NOW())
     ", [
@@ -54,20 +54,15 @@ try {
 
     // If an image was uploaded, update the images table to mark it as posted
     if ($imageUuid) {
-        $db->query("UPDATE images SET posted = 1 WHERE id = ?", [$imageUuid]);
+        $db->updateRecords("UPDATE images SET posted = 1 WHERE id = ?", [$imageUuid]);
     }
 
-    // Return success response
-    echo json_encode([
-        'success' => true,
+    // Return success response using response utility
+    sendCreated([
         'post_id' => $postId,
         'message' => 'Post created successfully'
     ]);
 
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'error' => 'Failed to create post: ' . $e->getMessage()
-    ]);
+    sendError('Failed to create post: ' . $e->getMessage(), 500);
 }

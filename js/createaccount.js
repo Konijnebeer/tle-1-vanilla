@@ -1,50 +1,78 @@
+import { ajaxRequestPUT } from './utils/fetch.js'
+
 window.addEventListener('load', init);
 
-let createAccount;
-
 function init() {
-    createAccount = document.querySelector('#create-account');
-    const form = createAccountForm();
-    fillForm(form);
+    const form = document.getElementById('accountForm');
+    form.addEventListener('submit', handleFormSubmit);
 }
 
-function createAccountForm() {
-    const accountForm = document.createElement('form');
-    accountForm.classList.add('form-container');
-    accountForm.setAttribute('method', 'post');
-    accountForm.setAttribute('action', './api/createaccount.php'); // ✅ FIXED
-    createAccount.appendChild(accountForm);
-    return accountForm;
+function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Clear previous errors
+    clearErrors();
+    
+    // Get form data
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    // console.log('Sending data:', data); // Debug log
+    
+    // Send AJAX request using PUT
+    ajaxRequestPUT(
+        './api/createaccount.php',
+        handleSuccess,
+        data,
+        handleError
+    );
 }
 
-function fillForm(accountForm) {
-    function addField(labelText, type, name) {
-        const label = document.createElement('label');
-        label.innerText = labelText;
-        label.setAttribute('for', name);
+function handleSuccess(response) {
+    console.log('Account created successfully:', response);
+    // Redirect to home page on success
+    window.location.href = './home.html';
+}
 
-        const input = document.createElement('input');
-        input.setAttribute('type', type);
-        input.setAttribute('name', name);
-        input.setAttribute('id', name);
-        input.required = true;
-
-        accountForm.appendChild(label);
-        accountForm.appendChild(document.createElement('br'));
-        accountForm.appendChild(input);
-        accountForm.appendChild(document.createElement('br'));
+function handleError(error) {
+    // console.error('Account creation failed:', error);
+    // console.log('Error object:', error);
+    // console.log('Error responseData:', error.responseData);
+    
+    // Check if the error has responseData (validation errors)
+    if (error.responseData && error.responseData.error && error.responseData.error.details) {
+        displayErrors(error.responseData.error.details);
+    } else if (error.responseData && error.responseData.errors) {
+        // Alternative format - direct errors object
+        displayErrors(error.responseData.errors);
+    } else if (error.status === 400) {
+        alert('Validation error occurred but details were not received properly');
+    } else {
+        alert('Er is een fout opgetreden: ' + error.message);
     }
+}
 
-    addField('Email:', 'email', 'email');
-    addField('Username:', 'text', 'username');
-    addField('Telefoonnummer:', 'tel', 'phoneNumber'); // ✅ match PHP
-    addField('Wachtwoord:', 'password', 'password');
-    addField('Wachtwoord bevestigen:', 'password', 'confirm_password'); // ✅ will check in PHP
+function displayErrors(errors) {
+    // console.log('Displaying errors:', errors);
+    
+    // Display each error next to the corresponding field
+    Object.keys(errors).forEach(fieldName => {
+        const errorElement = document.getElementById(`error-${fieldName}`);
+        if (errorElement) {
+            errorElement.textContent = errors[fieldName];
+            errorElement.style.display = 'block';
+        } else {
+            console.warn(`Error element not found: error-${fieldName}`);
+        }
+    });
+}
 
-    const submit = document.createElement('button');
-    submit.setAttribute('type', 'submit');
-    submit.innerText = 'Create Account';
-    accountForm.appendChild(document.createElement('br'));
-    accountForm.appendChild(submit);
+function clearErrors() {
+    // Clear all error messages
+    const errorElements = document.querySelectorAll('.error-message');
+    errorElements.forEach(element => {
+        element.textContent = '';
+        element.style.display = 'none';
+    });
 }
 
