@@ -110,7 +110,7 @@ try {
     }
 
     // Return success response using response utility
-    sendSuccess([
+    sendCreated([
         'uuid' => $uuid,
         'filename' => $fileName,
         'folder' => $folder,

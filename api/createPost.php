@@ -57,7 +57,7 @@ try {
         $db->updateRecords("UPDATE images SET posted = 1 WHERE id = ?", [$imageUuid]);
     }
 
-    // Return success response using response utility
+    // Return success response
     sendCreated([
         'post_id' => $postId,
         'message' => 'Post created successfully'

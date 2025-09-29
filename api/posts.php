@@ -17,18 +17,18 @@ try {
     if ($action === 'getall') {
         // Get user from session
         $user = getCurrentUser();
-        
+
         if (empty($user['groups'])) {
             sendSuccess(['posts' => []]);
             return;
         }
-        
+
         // Get database connection
         $db = Database::getInstance();
-        
+
         // Create placeholders for user's groups
         $placeholders = str_repeat('?,', count($user['groups']) - 1) . '?';
-        
+
         // Updated SQL query with group names from database, ordered by newest first
         $sql = "
             SELECT 
@@ -49,13 +49,11 @@ try {
         ";
 
         $posts = $db->getRows($sql, $user['groups']);
-        
+
         sendSuccess(['posts' => $posts]);
-        
     } else {
         sendError('Unknown action', 400);
     }
-    
 } catch (Exception $e) {
     sendError('Failed to fetch posts: ' . $e->getMessage(), 500);
 }
