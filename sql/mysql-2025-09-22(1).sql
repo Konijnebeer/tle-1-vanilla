@@ -71,6 +71,33 @@ ALTER TABLE
     `role_user` ADD INDEX `role_user_role_id_index`(`role_id`);
 ALTER TABLE
     `role_user` ADD INDEX `role_user_user_id_index`(`user_id`);
+CREATE TABLE `friendships`(
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user1_id` BIGINT UNSIGNED NOT NULL,
+    `user2_id` BIGINT UNSIGNED NOT NULL,
+    `status` ENUM('PENDING', 'ACCEPTED', 'REJECTED') NOT NULL DEFAULT 'PENDING',
+    `sent_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+ALTER TABLE
+    `friendships` ADD INDEX `friendships_user1_id_index`(`user1_id`);
+ALTER TABLE
+    `friendships` ADD INDEX `friendships_user2_id_index`(`user2_id`);
+ALTER TABLE
+    `friendships` ADD UNIQUE `uq_friendship_pair_status`(`user1_id`, `user2_id`, `status`);
+ALTER TABLE
+    `friendships` ADD CONSTRAINT `chk_friendship_order` CHECK (`user1_id` < `user2_id`);
+CREATE TABLE `messages`(
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `sender_id` BIGINT UNSIGNED NOT NULL,
+    `receiver_id` BIGINT UNSIGNED NOT NULL,
+    `message_text` TEXT NOT NULL,
+    `sent_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE
+    `messages` ADD INDEX `messages_sender_id_index`(`sender_id`);
+ALTER TABLE
+    `messages` ADD INDEX `messages_receiver_id_index`(`receiver_id`);
 ALTER TABLE
     `role_user` ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY(`role_id`) REFERENCES `roles`(`id`);
 ALTER TABLE
@@ -87,3 +114,11 @@ ALTER TABLE
     `user_group` ADD CONSTRAINT `user_group_group_id_foreign` FOREIGN KEY(`group_id`) REFERENCES `groups`(`id`);
 ALTER TABLE
     `role_user` ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
+ALTER TABLE
+    `friendships` ADD CONSTRAINT `friendships_user1_id_foreign` FOREIGN KEY(`user1_id`) REFERENCES `users`(`id`);
+ALTER TABLE
+    `friendships` ADD CONSTRAINT `friendships_user2_id_foreign` FOREIGN KEY(`user2_id`) REFERENCES `users`(`id`);
+ALTER TABLE
+    `messages` ADD CONSTRAINT `messages_sender_id_foreign` FOREIGN KEY(`sender_id`) REFERENCES `users`(`id`);
+ALTER TABLE
+    `messages` ADD CONSTRAINT `messages_receiver_id_foreign` FOREIGN KEY(`receiver_id`) REFERENCES `users`(`id`);
