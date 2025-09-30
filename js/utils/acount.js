@@ -9,9 +9,9 @@ import { ajaxRequestGET } from "./fetch.js";
  * Check if user is logged in and redirect to start.html if not
  * Call this on protected pages
  * @param {function} onSuccess Optional callback when user is authenticated
- * @param {string} redirectUrl URL to redirect to if not logged in (default: '../start.html')
+ * @param {string} redirectUrl URL to redirect to if not logged in (default: './start2.html')
  */
-function requireLogin(onSuccess = null, redirectUrl = "../start2.html") {
+function requireLogin(onSuccess = null, redirectUrl = "./start2.html") {
     checkAuthStatus(
         (userData) => {
             // User is logged in
@@ -35,7 +35,7 @@ function requireLogin(onSuccess = null, redirectUrl = "../start2.html") {
  */
 function checkAuthStatus(onLoggedIn, onLoggedOut) {
     ajaxRequestGET(
-        "../api/utils/acount.php?type=user",
+        "./api/utils/acount.php?type=user",
         (data) => {
             // Success - user is logged in
             if (onLoggedIn) {
@@ -58,7 +58,7 @@ function checkAuthStatus(onLoggedIn, onLoggedOut) {
  */
 function getCurrentUser(callback) {
     ajaxRequestGET(
-        "../api/utils/acount.php?type=user",
+        "./api/utils/acount.php?type=user",
         (data) => {
             callback(data.user);
         },
@@ -71,7 +71,7 @@ function getCurrentUser(callback) {
 
 /**
  * Logout user and redirect to start page
- * @param {string} redirectUrl URL to redirect to after logout (default: '../start.html')
+ * @param {string} redirectUrl URL to redirect to after logout (default: './start2.html')
  */
 function logout(redirectUrl = "./start2.html") {
     ajaxRequestGET(

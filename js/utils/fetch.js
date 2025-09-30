@@ -181,7 +181,7 @@ function ajaxRequestErrorHandler(error) {
         error.message.includes("Authentication")
     ) {
         // Redirect to login page
-        window.location.href = "../start2.html";
+        window.location.href = "./login.html";
         return;
     }
 
