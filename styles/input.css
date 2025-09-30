@@ -161,4 +161,19 @@ body {
     .main {
         @apply flex-1 p-4 pt-20 pb-20 min-h-screen;
     }
+
+    .input {
+        @apply font-medium w-full px-4 py-2 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary bg-background text-primary;
+    }
+
+    .dropdown {
+        @apply font-medium w-full px-4 py-2 border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary bg-background text-primary hover:bg-primary hover:text-background;
+    }
+
+    .label {
+        @apply block text-primary  mb-2 font-semibold;
+    }
+    .center-screen {
+        @apply flex items-center justify-center min-h-screen;
+    }
 }
