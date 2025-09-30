@@ -54,12 +54,12 @@ function success(data) {
     
     if (!data.posts || !Array.isArray(data.posts)) {
         console.error('No posts data received');
-        field.innerHTML = '<p class="no-posts">No posts available</p>';
+        field.innerHTML = '<p class="no-posts">Geen berichten beschikbaar</p>';
         return;
     }
     
     if (data.posts.length === 0) {
-        field.innerHTML = '<p class="no-posts">No posts found in your groups</p>';
+        field.innerHTML = '<p class="no-posts">Geen berichten gevonden in jouw groepen</p>';
         return;
     }
     
@@ -119,9 +119,9 @@ function errorHandler(error) {
     
     // Check if it's an authentication error
     if (error.message.includes('401') || error.message.includes('Authentication')) {
-        window.location.href = 'start.html';
+        window.location.href = 'start2.html';
         return;
     }
     
-    field.innerHTML = '<p class="error">Failed to load posts. Please try again later.</p>';
+    field.innerHTML = '<p class="error">Fout bij het laden van bericht. Probeer het opnieuw.</p>';
 }
