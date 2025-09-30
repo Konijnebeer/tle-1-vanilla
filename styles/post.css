@@ -103,6 +103,19 @@ main a {
     margin: 0.2em 0em;
 }
 
+.badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #8DA76F;
+    border-radius: 4px;
+}
+
+.badge::before {
+    content: '✓';
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 .group {
     align-self: flex-end;
     font-size: 1rem;
