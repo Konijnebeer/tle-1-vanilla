@@ -15,14 +15,14 @@ function contactenSuccess(data) {
     main.innerHTML = ''
 
     data.forEach(contact => {
-        const div = document.createElement('div')
-        div.classList.add('contact');
-        div.innerHTML = `
-            <h2>${contact.naam}</h2>
-            <p>Email: ${contact.email}</p>
-            <p>Telefoon: ${contact.telefoon}</p>
+        const card = document.createElement('div');
+        card.className = 'contact-card bg-white rounded-lg shadow-md p-6 mb-4 flex flex-col items-start';
+        card.innerHTML = `
+            <h2 class="text-xl font-bold mb-2">${contact.username}</h2>
+            <p class="mb-1"><span class="font-semibold">Email:</span> ${contact.email}</p>
+            <p><span class="font-semibold">Telefoon:</span> ${contact.phone_number}</p>
         `;
-        main.appendChild(div)
+        main.appendChild(card);
     });
     if (data.length === 0) {
         main.innerHTML = '<p>Geen contacten gevonden.</p>'
