@@ -11,7 +11,7 @@ function checkAuthentication() {
 function handleAuthResponse(data) {
     if (data.authenticated) {
         // User is logged in, redirect to home
-        window.location.href = 'start.html';
+        window.location.href = 'start2.html';
     } else {
         // User is not logged in, redirect to login
         window.location.href = 'api/login.php';

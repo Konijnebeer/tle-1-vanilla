@@ -66,7 +66,7 @@ function userHasGroup($groupId)
 }
 
 // Handle direct API requests to this file
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && basename($_SERVER['SCRIPT_NAME']) === 'acount.php' /* && isset($_GET['type']) && $_GET['type'] === 'user' */) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' /* && basename($_SERVER['SCRIPT_NAME']) === 'acount.php' */ && isset($_GET['type']) && $_GET['type'] === 'user') {
     $user = getCurrentUser();
 
     if ($user) {

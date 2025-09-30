@@ -21,7 +21,7 @@
     <script type="text/javascript" src="js/hex-background.js"></script>
     <script type="module" src="js/createPost.js" defer></script>
 
-    <title>Create Post</title>
+    <title>ENA - Nieuw Bericht</title>
   </head>
   <body>
     <div class="hexagon hex-large-one"></div>
@@ -32,10 +32,10 @@
 
     <header>
       <div class="back-button-container">
-        <a href="post.html" class="back-button">Back</a>
+        <a href="post.html" class="back-button">← Terug naar berichten tijdlijn</a>
       </div>
       <h1>ENA</h1>
-      <p>Create Your Post</p>
+      <p>Nieuw bericht</p>
     </header>
     <main class="flex justify-center items-center min-h-120">
       <form
@@ -46,7 +46,7 @@
           <label
             for="upload"
             class="block text-sm font-medium text-gray-700"
-          >Upload File
+          >Upload een foto
             <input
               id="upload"
               type="file"
@@ -58,7 +58,7 @@
           id="noImageButton"
           class="w-full px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
-          No Image
+          Geen foto toevoegen
         </button>
         <div id="imageContainer" class="hidden">
           <img
@@ -72,12 +72,12 @@
           <label
             for="group"
             class="block text-sm font-medium text-gray-700"
-          >Select Group
+          >Selecteer Groepen
             <select
               id="group"
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-              <option value="">Loading groups...</option>
+              <option value="">Laden van groepen...</option>
             </select>
           </label>
         </div>
@@ -85,7 +85,7 @@
           <label
             for="caption"
             class="block text-sm font-medium text-gray-700"
-          >Caption
+          >Berichttekst
             <input
               id="caption"
               type="text"
@@ -99,7 +99,7 @@
             type="button"
             class="w-full px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            Create Post
+            Maak een Bericht
           </button>
         </div>
       </form>

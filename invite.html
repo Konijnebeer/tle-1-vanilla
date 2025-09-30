@@ -8,8 +8,8 @@
         >
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="styles/output.css">
-        <link rel="stylesheet" href="styles/start.css">
-        <link rel="stylesheet" href="styles/createpost.css">
+        <!-- <link rel="stylesheet" href="styles/start.css">
+        <link rel="stylesheet" href="styles/createpost.css"> -->
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
         <script type="text/javascript" src="js/hex-background.js"></script>
         <script type="module" src="js/invite.js" defer></script>
 
-        <title>Send Invite</title>
+        <title>ENA - Send Invite</title>
     </head>
     <body>
         <div class="hexagon hex-large-one"></div>
@@ -30,27 +30,18 @@
         <div class="hexagon hex-small-one"></div>
         <div class="hexagon hex-small-two"></div>
 
-        <header>
-            <div class="back-button-container">
-                <a href="home.html" class="back-button">Back</a>
-            </div>
-            <h1>ENA</h1>
-            <p>Send Invite</p>
+        <header class="header flex flex-col py-10">
+            <a href="home.html" class="button absolute left-3 top-5 max-w-20 bg-secondary hover:bg-tertiary font-semibold">Back</a>
+            <p class="header-text absolute self-center top-6">Send Invite</p>
         </header>
-        <main class="flex justify-center items-center min-h-120">
-            <form
-                action=""
-                class="create-post-form max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-4"
-            >
+        <main class="main pt-20 center-screen flex-col">
+            <form action="" class="card">
                 <div id="emailContainer">
-                    <label
-                        for="email"
-                        class="block text-sm font-medium text-gray-700"
-                    >Email Address
+                    <label for="email" class="label">Email Address
                         <input
                             id="email"
                             type="email"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            class="input"
                             placeholder="friend@example.com"
                         >
                     </label>
@@ -58,29 +49,24 @@
                 <div id="groupContainer">
                     <label
                         for="group"
-                        class="block text-sm font-medium text-gray-700"
+                        class="label"
                     >Select Group
-                        <select
-                            id="group"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        >
+                        <select id="group"class="dropdown">
                             <option value="">Loading groups...</option>
                         </select>
                     </label>
                 </div>
-                <div id="inviteButtonContainer">
-                    <button
-                        id="inviteButton"
-                        type="button"
-                        class="w-full px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
-                    >
-                        Send Invite
-                    </button>
-                </div>
             </form>
+            <button id="inviteButton"type="button"class="button bg-sucsses max-w-50 mt-4 font-semibold">
+                Send Invite
+            </button>
         </main>
-        <footer>
+        <!-- Footer element -->
+        <footer class="footer">
             <p>Copyright 2025 - TLE1 Team 3</p>
         </footer>
+        <div class="wave-bottom"></div>
+        <div class="wave-accent"></div>
+    </body>
     </body>
 </html>
