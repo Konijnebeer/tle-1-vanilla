@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --ena-green: #A2B585;
+    --ena-pink: #DF917E;
+    --ena-yellow1: #E9BF6C;
+    --ena-yellow2: #E6B450;
+    --ena-yellow3: #E0A054;
+    --ena-brown: #B18A5E;
+    --ena-beige: #F5E9DD;
+}
+
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.raleway-regular {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "Audiowide", sans-serif;
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    padding: 10vw;
+    text-align: center;
+}
+
+header img {
+    width: 15vw;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10vw;
+    gap: 50px;
+
+    text-align: center;
+}
+
+section {
+    background-color: var(--ena-yellow1);
+    padding: 5vw;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel img {
+    width: 20vw;
+}
+
+.info {
+    flex: 0 0 85%;
+    background-color: var(--ena-beige);
+    padding: 5vw;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 15px;
+}
+
+.review {
+    background-color: var(--ena-beige);
+    text-align: left;
+    padding: 1vw;
+    border-radius: 15px;
+
+    display: flex;
+}
+
+.review img {
+    width: 10vw;
+    border-radius: 25px;
+}
+
+.button {
+    background-color: var(--ena-yellow3);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5vw;
+    border-radius: 15px;
+}
+
+footer {
+    padding: 10vw;
+    text-align: center;
+}
