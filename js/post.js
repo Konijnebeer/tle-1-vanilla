@@ -3,19 +3,20 @@ import { requireLogin } from './utils/acount.js';
 
 let field;
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     requireLogin(); // Check authentication first
-    
+
     // Initialize field element
     field = document.getElementById('field');
     if (!field) {
         console.error('Field element not found');
         return;
     }
-    
+
     // Load posts with action parameter
     ajaxRequestGET('api/posts.php?action=getall', success, errorHandler);
 });
+
 // Helper function to format relative time
 function getTimeAgo(dateString) {
     const now = new Date();
@@ -62,11 +63,11 @@ function success(data) {
         field.innerHTML = '<p class="no-posts">Geen berichten gevonden in jouw groepen</p>';
         return;
     }
-    
+
     for (const post of data.posts) {
         console.log(post);
         const div = document.createElement('div')
-        if (post.image_path !== null){
+        if (post.image_path !== null) {
             div.classList.add('box')
         } else {
             div.classList.add('boxNoImage')
@@ -77,8 +78,21 @@ function success(data) {
         nameAndGroupBox.classList.add('nameGroupBox')
 
         const title = document.createElement('h2')
-        title.innerHTML = `${post.username}`
+        // title.innerHTML = `${post.username}`
         title.classList.add('title')
+        // nameAndGroupBox.appendChild(title)
+        const usernameSpan = document.createElement('span')
+        usernameSpan.textContent = post.username
+        title.appendChild(usernameSpan)
+        // if (post.badge_name === '') {
+        console.log(`adding badge`)
+        const badge = document.createElement('span')
+        // badge.innerHTML = post.badge_name
+        badge.textContent = 'Verified'
+        badge.classList.add('badge')
+        nameAndGroupBox.appendChild(badge)
+        // }
+
         nameAndGroupBox.appendChild(title)
 
         const group = document.createElement('p')
@@ -89,7 +103,7 @@ function success(data) {
         div.appendChild(nameAndGroupBox);
 
         const image = document.createElement('img')
-        if (post.image_path !== null){
+        if (post.image_path !== null) {
             image.src = post.image_path
             image.alt = post.image_name || 'Post image'
             image.classList.add('postImage')
@@ -113,10 +127,10 @@ function success(data) {
 
 function errorHandler(error) {
     console.error("Error loading posts:", error);
-    
+
     // Clear loading message
     field.innerHTML = '';
-    
+
     // Check if it's an authentication error
     if (error.message.includes('401') || error.message.includes('Authentication')) {
         window.location.href = 'start2.html';

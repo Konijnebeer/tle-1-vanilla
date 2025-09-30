@@ -123,14 +123,36 @@ section {
     border-radius: 15px;
 
     display: flex;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.review .users {
+    flex: 0 0 180px; /* fixed width for consistency */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* centers username + stars under image */
+    gap: 0.5rem;
+    align-self: center;
+}
+
+.checked {
+    color: var(--ena-green);
 }
 
 .review img {
     width: 10vw;
-    border-radius: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review p {
+    flex: 1;
 }
 
 .button {
+    font-family: "Roboto", sans-serif;
     background-color: var(--ena-yellow3);
     color: #FFFFFF;
     text-decoration: none;

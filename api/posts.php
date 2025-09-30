@@ -39,10 +39,13 @@ try {
                 images.path AS image_path,
                 posts.text_content,
                 posts.created_at,
-                images.name AS image_name
+                images.name AS image_name,
+                roles.name AS badge_name
             FROM posts
             JOIN users ON posts.user_id = users.id
             JOIN `groups` ON posts.group_id = groups.id
+            LEFT JOIN role_user ON users.id = role_user.user_id
+            LEFT JOIN roles ON role_user.role_id = roles.id
             LEFT JOIN images ON posts.image_id = images.id
             WHERE posts.group_id IN ($placeholders)
             ORDER BY posts.created_at DESC
