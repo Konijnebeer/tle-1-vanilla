@@ -92,11 +92,11 @@ function loadGroupsSuccessHandler(groups) {
   groupSelect.innerHTML = '';
   
   if (groups.length === 0) {
-    groupSelect.innerHTML = '<option value="">No groups available</option>';
+    groupSelect.innerHTML = '<option value="">Er zijn geen groepen beschikbaar</option>';
     groupSelect.disabled = true;
   } else {
     // Add default option
-    groupSelect.innerHTML = '<option value="">Select a group</option>';
+    groupSelect.innerHTML = '<option value="">Selecteer een groep</option>';
     
     // Add group options
     groups.forEach(group => {
@@ -116,7 +116,7 @@ function loadGroupsSuccessHandler(groups) {
 function loadGroupsErrorHandler(error) {
   console.error("Failed to load groups:", error);
   const groupSelect = document.querySelector("#group");
-  groupSelect.innerHTML = '<option value="">Failed to load groups</option>';
+  groupSelect.innerHTML = '<option value="">Laden van groepen mislukt</option>';
   groupSelect.disabled = true;
 }
 
@@ -206,7 +206,7 @@ function postErrorHandler(error) {
   } else if (error.status === 401) {
     // Authentication error - redirect to login
     alert("Please log in to create a post");
-    window.location.href = "start.html";
+    window.location.href = "start2.html";
   } else if (error.responseData && error.responseData.error) {
     // Server returned structured error
     alert("Error: " + error.responseData.error.message);

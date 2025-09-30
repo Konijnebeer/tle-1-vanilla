@@ -112,7 +112,7 @@ function inviteErrorHandler(error) {
     } else if (error.status === 401) {
         // Authentication error - redirect to login
         alert("Please log in to send invites");
-        window.location.href = "start.html";
+        window.location.href = "start2.html";
     } else if (error.responseData && error.responseData.error) {
         // Server returned structured error
         alert("Error: " + error.responseData.error.message);

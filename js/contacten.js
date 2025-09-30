@@ -18,11 +18,29 @@ function contactenSuccess(data) {
         const card = document.createElement('div');
         card.className = 'contact';
         card.innerHTML = `
-            <h2 class="text-xl font-bold mb-2">${contact.username}</h2>
-            <p class="mb-1"><span class="font-semibold">Email:</span> ${contact.email}</p>
-            <p><span class="font-semibold">Telefoon:</span> ${contact.phone_number}</p>
+            <div>
+                <h2 class="text-xl font-bold mb-2">@${contact.username}</h2>
+                <p class="mb-1"><span class="font-semibold">Email:</span> ${contact.email}</p>
+                <p><span class="font-semibold">Telefoon:</span> ${contact.phone_number}</p>
+            </div>
         `;
+
+        const div = document.createElement('div');
+        div.className = 'buttons';
+        card.appendChild(div);
+
+        const phoneIcon = document.createElement('img');
+        phoneIcon.src = 'icons/phone-icon.png';
+        phoneIcon.alt = 'Telefoon';
+        div.appendChild(phoneIcon);
+
+        const chatIcon = document.createElement('img');
+        chatIcon.src = 'icons/chat-icon.png';
+        chatIcon.alt = 'Berichten';
+        div.appendChild(chatIcon);
+
         main.appendChild(card);
+
     });
     if (data.length === 0) {
         main.innerHTML = '<p>Geen contacten gevonden.</p>'
