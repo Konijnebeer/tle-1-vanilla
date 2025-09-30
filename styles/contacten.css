@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --ena-green: #A2B585;
+    --ena-pink: #DF917E;
+    --ena-yellow1: #E9BF6C;
+    --ena-yellow2: #E6B450;
+    --ena-yellow3: #E0A054;
+    --ena-brown: #B18A5E;
+    --ena-beige: #F5E9DD;
+}
+
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.raleway-regular {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "Audiowide", sans-serif;
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10vw;
+    gap: 50px;
+
+    text-align: center;
+}
+
+.contact {
+    background-color: var(--ena-beige);
+    border: solid 2px var(--ena-yellow1);
+}
