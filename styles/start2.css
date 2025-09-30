@@ -77,7 +77,10 @@ section {
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
 }
 
 .carousel-btn {
@@ -101,7 +104,7 @@ section {
 }
 
 .carousel img {
-    width: 20vw;
+    width: 40vw;
 }
 
 .info {
@@ -109,11 +112,17 @@ section {
     background-color: var(--ena-beige);
     padding: 5vw;
     border-radius: 15px;
+    scroll-snap-align: center;
+    margin: 0 auto;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*text-align: left;*/
+    /*gap: 15px;*/
+}
 
+.contact-groups {
     display: flex;
-    align-items: center;
-    text-align: left;
-    gap: 15px;
+    flex-direction: column;
 }
 
 .review {
@@ -123,18 +132,19 @@ section {
     border-radius: 15px;
 
     display: flex;
+    flex-direction: column;
     gap: 3px;
     align-items: flex-start;
 }
 
 .review .users {
-    flex: 0 0 180px; /* fixed width for consistency */
-    display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center; /* centers username + stars under image */
-    gap: 0.5rem;
     align-self: center;
+}
+
+.users p {
+    margin-bottom: 0;
 }
 
 .checked {
