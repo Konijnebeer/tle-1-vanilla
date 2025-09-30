@@ -26,13 +26,6 @@ header p {
     padding: 20vw 0 10vw 0;
 } */
 
-.button {
-    text-decoration: none;
-    background-color: black;
-    padding: 3vw 8vw;
-    border-radius: 10px;
-}
-
 main a {
     font-weight: bold;
     font-size: 1.5rem;
@@ -83,6 +76,12 @@ main a {
     margin-top: 1em;
 }
 
+.titlebox {
+    width: 90%;
+    font-size: 2rem;
+    line-height: 1.4;
+}
+
 .dateTime {
     align-self: flex-end;
     margin-right: 5%;
@@ -122,14 +121,6 @@ main a {
     color: #c0492e;
     font-weight: bold;
     margin: 0.2em 0em;
-}
-
-button {
-    padding: 1vh 2vh;
-    border-radius: 5px;
-    border: none;
-    font-weight: bold;
-    background-color: #e0a054;
 }
 
 .loading, .no-posts, .error {
