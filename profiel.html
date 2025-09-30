@@ -7,9 +7,9 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     >
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="styles/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/start.css">
-    <link rel="stylesheet" href="styles/profiel.css">
+    <!-- <link rel="stylesheet" href="styles/start.css"> -->
+    <!-- <link rel="stylesheet" href="styles/profiel.css"> -->
+    <link rel="stylesheet" href="styles/output.css" >
     <script type="text/javascript" src="js/hex-background.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=DM+Serif+Text:ital@0;1&family=Press+Start+2P&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
@@ -17,36 +17,33 @@
     <title>Profiel</title>
     <script type="module" src="js/profiel.js" defer></script>
 </head>
-<body>
-<div class="hexagon hex-large-one"></div>
-<div class="hexagon hex-large-two"></div>
-<div class="hexagon hex-medium-one"></div>
-<div class="hexagon hex-small-one"></div>
-<div class="hexagon hex-small-two"></div>
+    <body>
+        <div class="hexagon hex-large-one"></div>
+        <div class="hexagon hex-large-two"></div>
+        <div class="hexagon hex-medium-one"></div>
+        <div class="hexagon hex-small-one"></div>
+        <div class="hexagon hex-small-two"></div>
 
-<header>
-    <div class="back-button-container">
-        <a href="home.html" class="back-button">← Terug naar Beginscherm</a>
-    </div>
-    <div class="logo-container">
-        <img src="icons/Logo-ENA-v02.png" alt="ENA Logo" class="logo">
-    </div>
-    <p>Jou Profiel</p>
-</header>
-<main>
-    <div class="profile-container mx-6">
-        <h2 class="profile-title">Gebruikers Profiel</h2>
-        <div id="profiel" class="profile-content"></div>
-    </div>
-    <div class="profile-buttons">
-        <a href="api/logout.php" class="logout-button">
-            Uitloggen
-        </a>
-    </div>
-</main>
-<footer>
+        <header class="header flex flex-col py-15">
+            
+            <a href="home.html" class="button absolute left-3 top-5 max-w-30 bg-secondary hover:bg-tertiary font-semibold">← Terug</a>
+            <p class="header-text absolute self-center top-16">Jou Profiel</p>
+
+            <div class="aspect-square absolute right-3 top-3 w-10 h-10">
+                <img src="icons/Logo-ENA-v02.png" alt="ENA Logo" class="logo">
+            </div>
+        </header>
+        <main class="main center-screen flex-col">
+        <div class="card">
+            <h2 class="header-text text-md pb-4 text-sucsses text-shadow-xs">Gebruikers Profiel</h2>
+            <div id="profiel" class=""></div>
+        </div>
+            <a href="api/logout.php" class="button bg-fail max-w-50 mt-4 font-semibold">Uitloggen</a>
+    </main>
+    <footer class="footer">
+        <p>Copyright 2025 - TLE1 Team 3</p>
+    </footer>
     <div class="wave-bottom"></div>
     <div class="wave-accent"></div>
-</footer>
 </body>
 </html>

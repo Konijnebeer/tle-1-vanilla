@@ -129,7 +129,7 @@ body {
 @layer components {
     .button {
         @apply w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary
-            transition-colors duration-200 text-center font-medium;
+            transition-colors duration-200 text-center font-medium hover:cursor-pointer;
     }
 
     .card {

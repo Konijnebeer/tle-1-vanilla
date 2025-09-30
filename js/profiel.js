@@ -19,11 +19,11 @@ function profileSuccessHandler(data) {
     } else {
         container.innerHTML = `
             <div class="space-y-3">
-                <p><strong class="text-gray-800">Gebruikersnaam:</strong> <span class="text-gray-700">${data.username}</span></p>
-                <p><strong class="text-gray-800">Email:</strong> <span class="text-gray-700">${data.email}</span></p>
-                <p><strong class="text-gray-800">Telefoonnummer:</strong> <span class="text-gray-700">${data.phone_number}</span></p>
-                <p><strong class="text-gray-800">Aangemaakt op:</strong> <span class="text-gray-700">${data.created_at}</span></p>
-                <p><strong class="text-gray-800">Bijgewerkt op:</strong> <span class="text-gray-700">${data.updated_at}</span></p>
+                <p><strong class="text-background py-2">Gebruikersnaam:</strong> <span class="text-background">${data.username}</span></p>
+                <p><strong class="text-background py-2">Email:</strong> <span class="text-background">${data.email}</span></p>
+                <p><strong class="text-background py-2">Telefoonnummer:</strong> <span class="text-background">${data.phone_number}</span></p>
+                <p><strong class="text-background py-2">Aangemaakt op:</strong> <span class="text-background">${data.created_at}</span></p>
+                <p><strong class="text-background py-2">Bijgewerkt op:</strong> <span class="text-background">${data.updated_at}</span></p>
             </div>
         `;
     }
