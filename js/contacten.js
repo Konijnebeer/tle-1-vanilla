@@ -22,7 +22,10 @@ function contactenSuccess(data) {
                 <h2 class="text-xl font-bold mb-2">@${contact.username}</h2>
                 <p class="mb-1"><span class="font-semibold">Email:</span> ${contact.email}</p>
                 <p><span class="font-semibold">Telefoon:</span> ${contact.phone_number}</p>
+                <a href="messages.html?user=${contact.id}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Stuur bericht</a>
             </div>
+    
+      
         `;
 
         const div = document.createElement('div');

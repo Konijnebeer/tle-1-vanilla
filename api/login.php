@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <script type="text/javascript" src="../js/hex-background.js"></script>
-    <title>Log in</title>
+    <title>ENA - Inloggen</title>
 </head>
 
 <body class="bg-[#E0A054] min-h-screen">
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 
 <div class="min-h-screen flex flex-col items-center justify-center px-4">
     <div class="bg-[#E0A054] p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-center mb-6 font-audiowide">Log in</h2>
+        <h2 class="text-2xl font-bold text-center mb-6 font-audiowide">Inloggen</h2>
 
         <?php if ($login) { ?>
             <div class="text-center space-y-4">
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div>
-                    <label class="block text-gray-800 font-semibold mb-2" for="password_hash">Password</label>
+                    <label class="block text-gray-800 font-semibold mb-2" for="password_hash">Wachtwoord</label>
                     <input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
                            id="password_hash" type="password" name="password_hash"/>
                     <?php if (isset($errors['password'])) { ?>
@@ -128,11 +128,10 @@ if (isset($_POST['submit'])) {
 
             <div class="mt-6 space-y-3 text-center">
                 <a href="../createaccount.html"
-                   class="block bg-[#A2B585] text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">Create
-                    Account</a>
+                   class="block bg-[#A2B585] text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">Maak een account</a>
                 <a href="../start2.html"
                    class="block bg-[#B18A5E] text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">&laquo;
-                    Go back to START</a>
+                    Terug naar start</a>
             </div>
 
         <?php } ?>
