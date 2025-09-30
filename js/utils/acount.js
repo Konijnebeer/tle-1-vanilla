@@ -74,7 +74,6 @@ function getCurrentUser(callback) {
  * @param {string} redirectUrl URL to redirect to after logout (default: './start2.html')
  */
 function logout(redirectUrl = "./start2.html") {
-function logout(redirectUrl = "./start2.html") {
     ajaxRequestGET(
         "../api/logout.php",
         () => {
