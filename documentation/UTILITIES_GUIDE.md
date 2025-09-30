@@ -134,7 +134,7 @@ import {
 } from "./utils/acount.js";
 
 // Require login on protected pages
-requireLogin(); // Redirects to ../start.html if not logged in
+requireLogin(); // Redirects to ./start2.html if not logged in
 
 // Check auth without redirecting
 checkAuthStatus(
@@ -202,7 +202,7 @@ function createPost(title, content) {
     "../api/protected-endpoint.php",
     (data) => {
       alert("Post created successfully!");
-      window.location.href = "../home.html";
+      window.location.href = "./home.html";
     },
     {
       title: title,
