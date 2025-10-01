@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     if (empty($errors)) {
         try {
 
-            $url = 'https://project.gmt.hr.nl/2025_2026/tle1_t3/invite.html';
+            $url = 'https://project.gmt.hr.nl/2025_2026/tle1_t3/post.html';
             if (ENVIRONMENT === 'development') {
-                $url = 'http://tle-1-vanilla.test/invite.html';
+                $url = 'http://tle-1-vanilla.test/post.html';
             }
             // Get current Time
             $time = time();
