@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     if (empty($errors)) {
         try {
 
-            $url = 'https://project.gmt.hr.nl/2025_2026/tle1_t3/invite.html';
+            $url = 'https://project.gmt.hr.nl/2025_2026/tle1_t3/post.html';
             if (ENVIRONMENT === 'development') {
-                $url = 'http://tle-1-vanilla.test/invite.html';
+                $url = 'http://tle-1-vanilla.test/post.html';
             }
             // Get current Time
             $time = time();
@@ -60,6 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
             $base64 = base64_encode("$userId/$groupId/$time");
             $url = $url . '?code=' . $base64;
 
+            // get username
+            $user = getCurrentUser();
+            $userName = $user['username'];
             // Send email
             // Prepare email content
             $subject = 'Uitnodiging voor groep';
@@ -69,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
                 <title>Uitnodiging</title>
             </head>
             <body>
-                <p>Je bent uitgenodigd voor een groep. Klik op de knop om deel te nemen:</p>
+                <p>Je bent uitgenodigd voor Ena, door: $userName. Klik op de knop om een voorpoefje te krijgen.</p>
                 <a href='$url' style='display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;'>Deelnemen</a>
             </body>
             </html>

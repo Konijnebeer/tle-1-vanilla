@@ -1,17 +1,16 @@
-<!doctype html>
-<html lang=nl>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/createaccount.css">
-    <link rel="stylesheet" href="styles/input.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts - ENA</title>
+    <script type="module" src="js/viewgroups.js" defer></script>
+    <link href="styles/post.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+</head>
 
     <script type="text/javascript" src="js/hex-background.js"></script>
     <script type="module" src="js/creategroup.js" defer></script>
@@ -24,32 +23,49 @@
 <div class="hexagon hex-medium-one"></div>
 <div class="hexagon hex-small-one"></div>
 <div class="hexagon hex-small-two"></div>
+
+<header>
+    <div class="flex items-center justify-center my-4">
+        <img src="icons/Logo-ENA-v02.png" alt="ENA Logo" class="w-12 h-12 mr-3">
+        <h1 class="font-audiowide text-2xl">Groepen</h1>
+    </div>
+    <nav class="flex justify-center space-x-4">
+        <a href="viewgroups.html">
+            <button class="button">Groepen</button>
+        </a>
+        <a href="contacten.html">
+            <button class="button">Contacten</button>
+        </a>
+    </nav>
+</header>
 <main>
     <section id="create-account">
-        <h2>Maak een groep aan</h2>
-        <form id="groupForm" class="form-container">
+        <form id="groupForm" class="card p-6 bg-[#E0A054]">
             <label for="groupName">Naam van de groep:</label>
             <br>
-            <input type="text" name="groupName" id="groupName" required>
+            <input type="text" name="groupName" id="groupName" required
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
             <div class="error-message" id="error-group"></div>
             <br>
             <br>
 
             <label for="description">Korte beschrijving van de groep</label>
             <br>
-            <input type="text" name="description" id="description" required>
+            <input type="text" name="description" id="description" required
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
             <div class="error-message" id="error-description"></div>
             <br>
             <br>
 
             <label for="theme">Thema van de groep</label>
             <br>
-            <input type="text" name="theme" id="theme" required>
+            <input type="text" name="theme" id="theme" required
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
             <div class="error-message" id="error-theme"></div>
             <br>
             <br>
 
-            <button type="submit">Maak groep</button>
+            <button type="submit" class="button">Maak groep</button>
         </form>
     </section>
 </main>
