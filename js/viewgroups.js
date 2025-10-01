@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
         return;
     }
 
-    ajaxRequestGET('api/viewgroups.php?action=getall', success, errorHandler);
+    ajaxRequestGET('./api/viewgroups.php?action=getall', success, errorHandler);
 });
 
 function success(data) {
