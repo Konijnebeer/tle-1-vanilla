@@ -2,7 +2,6 @@ import { ajaxRequestGET } from './utils/fetch.js';
 import { requireLogin } from './utils/acount.js';
 
 let field;
-
 window.addEventListener('load', function() {
     requireLogin(); // Check authentication first
 
@@ -17,7 +16,6 @@ window.addEventListener('load', function() {
 });
 
 function success(data) {
-    console.log(data);
     for (const groups of data.groups) {
         console.log(groups);
         const div = document.createElement('div')
@@ -38,9 +36,18 @@ function success(data) {
             theme.classList.add('textBox')
             theme.innerHTML = `Thema: ${groups.theme}`;
             div.appendChild(theme);
-            field.appendChild(div);
 
+            const href = document.createElement('a');
+            href.href = `invitetogroup.html?id=${groups.id}`;
+
+            const button = document.createElement('button');
+            button.classList.add('button')
+            button.innerHTML = 'Nodig uit naar groep';
+            href.appendChild(button);
+            div.appendChild(href);
+            field.appendChild(div);
     }
+
 }
 
 function errorHandler(error) {
