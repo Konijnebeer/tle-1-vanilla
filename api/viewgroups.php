@@ -6,28 +6,28 @@ require_once './utils/response.php';
 // Check authentication using the utility function
 requireAuth();
 
-// Get user ID from session
-$userId = getCurrentUserId();
-
 try {
     $action = $_GET['action'] ?? '';
 
     if ($action === 'getall') {
-        // Get user from session
+        // Get user from session (same as posts.php)
         $user = getCurrentUser();
 
         if (empty($user['groups'])) {
-            sendSuccess(['posts' => []]);
+            sendSuccess(['groups' => []]); // Changed from 'posts' to 'groups'
             return;
         }
 
         // Get database instance
         $db = Database::getInstance();
 
-        // Fixed SQL query with backticks and correct column name
+        // Create placeholders for user's groups (same as posts.php)
+        $placeholders = str_repeat('?,', count($user['groups']) - 1) . '?';
+
+        // Get groups that the user is member of, not groups they own
         $groups = $db->getRows(
-            'SELECT name, discription, theme FROM `groups` WHERE `groups`.user_id = ?',
-            [$userId]
+            "SELECT id, name, discription, theme FROM `groups` WHERE id IN ($placeholders)",
+            $user['groups']
         );
 
         sendSuccess(['groups' => $groups]);
