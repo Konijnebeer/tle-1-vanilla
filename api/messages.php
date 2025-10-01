@@ -20,11 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $db = Database::getInstance();
     $results = $db->getRows(
-        "SELECT *
-FROM messages
-WHERE (sender_id = ? AND receiver_id = ?)
-   OR (sender_id = ? AND receiver_id = ?)
-ORDER BY sent_at ASC;", [
+        "SELECT m.*, 
+                sender.username AS sender_name, 
+                receiver.username AS receiver_name
+         FROM messages m
+         JOIN users sender ON m.sender_id = sender.id
+         JOIN users receiver ON m.receiver_id = receiver.id
+         WHERE (m.sender_id = ? AND m.receiver_id = ?)
+            OR (m.sender_id = ? AND m.receiver_id = ?)
+         ORDER BY m.sent_at ASC", [
             $user_id, $user2_id, $user2_id, $user_id
         ]
     );

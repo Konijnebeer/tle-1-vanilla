@@ -22,7 +22,6 @@ function contactenSuccess(data) {
                 <h2 class="text-xl font-bold mb-2">@${contact.username}</h2>
                 <p class="mb-1"><span class="font-semibold">Email:</span> ${contact.email}</p>
                 <p><span class="font-semibold">Telefoon:</span> ${contact.phone_number}</p>
-                <a href="messages.html?user=${contact.id}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Stuur bericht</a>
             </div>
     
       
@@ -32,15 +31,23 @@ function contactenSuccess(data) {
         div.className = 'buttons';
         card.appendChild(div);
 
+        const link = document.createElement('a');
+        link.href = `messages.html?user=${contact.id}`;
+        link.className = 'mt-4 inline-block';
+
         const phoneIcon = document.createElement('img');
         phoneIcon.src = 'icons/phone-icon.png';
         phoneIcon.alt = 'Telefoon';
+        phoneIcon.className = 'w-8 h-8';
         div.appendChild(phoneIcon);
 
         const chatIcon = document.createElement('img');
         chatIcon.src = 'icons/chat-icon.png';
         chatIcon.alt = 'Berichten';
-        div.appendChild(chatIcon);
+        chatIcon.className = 'ml-4 w-8 h-8';
+        link.appendChild(chatIcon);
+
+        div.appendChild(link);
 
         main.appendChild(card);
 
