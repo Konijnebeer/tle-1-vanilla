@@ -20,18 +20,18 @@ function loadUserGroups() {
 }
 
 function loadGroupsSuccessHandler(groups) {
-    console.log("User groups loaded:", groups);
+    console.log("gebruikers groepen zijn geladen:", groups);
     userGroups = groups;
     
     const groupSelect = document.querySelector("#group");
     groupSelect.innerHTML = '';
     
     if (groups.length === 0) {
-        groupSelect.innerHTML = '<option value="">No groups available</option>';
+        groupSelect.innerHTML = '<option value="">Geen groepen gevonden</option>';
         groupSelect.disabled = true;
     } else {
         // Add default option
-        groupSelect.innerHTML = '<option value="">Select a group</option>';
+        groupSelect.innerHTML = '<option value="">Selecter een groep</option>';
         
         // Add group options
         groups.forEach(group => {
@@ -49,9 +49,9 @@ function loadGroupsSuccessHandler(groups) {
 }
 
 function loadGroupsErrorHandler(error) {
-    console.error("Failed to load groups:", error);
+    console.error("Laden van groepen mislukt:", error);
     const groupSelect = document.querySelector("#group");
-    groupSelect.innerHTML = '<option value="">Failed to load groups</option>';
+    groupSelect.innerHTML = '<option value="">Kan groepen niet laden</option>';
     groupSelect.disabled = true;
 }
 
@@ -61,20 +61,20 @@ function sendInvite() {
 
     // Validate email
     if (!email) {
-        alert("Please enter an email address");
+        alert("Geef een email op");
         return;
     }
 
     // Validate group selection
     if (!selectedGroupId) {
-        alert("Please select a group");
+        alert("Selecteer een groep");
         return;
     }
 
     // Disable the button to prevent double submission
     const inviteButton = document.querySelector("#inviteButton");
     inviteButton.disabled = true;
-    inviteButton.textContent = "Sending Invite...";
+    inviteButton.textContent = "Bezig met uitnodigen...";
 
     // Prepare the invite data
     const inviteData = {
@@ -82,22 +82,22 @@ function sendInvite() {
         group: parseInt(selectedGroupId)
     };
 
-    console.log("Sending invite with data:", inviteData);
+    console.log("Verstuur uitnodiging met gegevens:", inviteData);
 
     // Send the invite data using PUT request
     ajaxRequestPUT(inviteUrl, inviteSuccessHandler, inviteData, inviteErrorHandler);
 }
 
 function inviteSuccessHandler(data) {
-    console.log("Invite sent successfully:", data);
-    alert("Invite sent successfully!");
+    console.log("Uitnodiging is verstuurd:", data);
+    alert("Uitnodiging is succesvol verstuurd");
     // Reset form
     document.querySelector("#email").value = '';
     document.querySelector("#group").value = '';
 }
 
 function inviteErrorHandler(error) {
-    console.error("Error sending invite:", error);
+    console.error("Error uitnodiging mislukt:", error);
     
     // Check if this is a validation error with details
     if (error.status === 400 && error.responseData && error.responseData.error && error.responseData.error.details) {
@@ -111,18 +111,18 @@ function inviteErrorHandler(error) {
         alert(errorMessage);
     } else if (error.status === 401) {
         // Authentication error - redirect to login
-        alert("Please log in to send invites");
+        alert("login om uitnodigingen te versturen");
         window.location.href = "start2.html";
     } else if (error.responseData && error.responseData.error) {
         // Server returned structured error
         alert("Error: " + error.responseData.error.message);
     } else {
         // Generic error
-        alert("Error sending invite: " + error.message);
+        alert("Error versturen mislukt: " + error.message);
     }
     
     // Re-enable the button
     const inviteButton = document.querySelector("#inviteButton");
     inviteButton.disabled = false;
-    inviteButton.textContent = "Send Invite";
+    inviteButton.textContent = "verstuur uitnodiging";
 }
