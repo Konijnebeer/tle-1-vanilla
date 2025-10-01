@@ -4,7 +4,6 @@ import { requireLogin } from './utils/acount.js';
 let field;
 
 window.addEventListener('load', function () {
-    requireLogin(); // Check authentication first
 
     // Initialize field element
     field = document.getElementById('field');
@@ -12,9 +11,25 @@ window.addEventListener('load', function () {
         console.error('Field element not found');
         return;
     }
+    if (new URLSearchParams(window.location.search).has('code')) {
+        // Loading invite posts
 
-    // Load posts with action parameter
-    ajaxRequestGET('api/posts.php?action=getall', success, errorHandler);
+        const url = new URL(window.location.href);
+        const code = url.searchParams.get('code');
+        console.log(`Invite code found: ${code}`);
+        // Load invite with code parameter
+        ajaxRequestGET(`api/invite.php?code=${code}`, success, errorHandler);
+    } else {
+        // Loading normal posts.
+        
+        requireLogin(); // Check authentication first
+        // Load posts with action parameter
+        ajaxRequestGET('api/posts.php?action=getall', success, errorHandler);
+    }
+
+
+
+
 });
 
 // Helper function to format relative time
