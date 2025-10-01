@@ -42,14 +42,6 @@ p {
     font-family: "Roboto", sans-serif;
 }
 
-header {
-    text-align: center;
-    padding: 10vw;
-
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-}
 
 .back-button {
     padding: 2vw;

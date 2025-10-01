@@ -19,21 +19,21 @@ function success(data) {
     for (const groups of data.groups) {
         console.log(groups);
         const div = document.createElement('div')
-            div.classList.add('boxNoImage')
+            div.classList.add('card')
             div.id = `${groups.id}`;
 
         const title = document.createElement('h2');
-            title.classList.add('titlebox')
+            title.classList.add('header-text',  'text-shadow-md',)
             title.innerHTML = groups.name;
             div.appendChild(title);
 
         const description = document.createElement('p');
-            description.classList.add('textBox')
+            description.classList.add('main-text', 'text-center')
             description.innerHTML = groups.discription;
             div.appendChild(description);
 
             const theme = document.createElement('p');
-            theme.classList.add('textBox')
+            theme.classList.add('main-text', 'text-center', 'text-sm', 'italic')
             theme.innerHTML = `Thema: ${groups.theme}`;
             div.appendChild(theme);
 
@@ -41,7 +41,7 @@ function success(data) {
             href.href = `invitetogroup.html?id=${groups.id}`;
 
             const button = document.createElement('button');
-            button.classList.add('button')
+            button.classList.add('button', 'mt-3', 'font-semibold');
             button.innerHTML = 'Nodig uit naar groep';
             href.appendChild(button);
             div.appendChild(href);
@@ -62,5 +62,5 @@ function errorHandler(error) {
         return;
     }
 
-    field.innerHTML = '<p class="error">Failed to load groups. Please try again later.</p>';
+    field.innerHTML = '<p class="error card">Failed to load groups. Please try again later.</p>';
 }

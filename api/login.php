@@ -39,10 +39,10 @@ if (isset($_POST['submit'])) {
 
             // Store comprehensive user data in session
             $_SESSION['user'] = [
-                    'id' => $user['id'],
-                    'username' => $user['username'],
-                    'email' => $email,
-                    'groups' => $groupIds
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'email' => $email,
+                'groups' => $groupIds
             ];
 
             // Redirect to secure page
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="../styles/output.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,41 +78,38 @@ if (isset($_POST['submit'])) {
 
 <body class="bg-[#E0A054] min-h-screen">
 
-<div class="hexagon hex-large-one"></div>
-<div class="hexagon hex-large-two"></div>
-<div class="hexagon hex-medium-one"></div>
-<div class="hexagon hex-small-one"></div>
-<div class="hexagon hex-small-two"></div>
+    <div class="hexagon hex-large-one"></div>
+    <div class="hexagon hex-large-two"></div>
+    <div class="hexagon hex-medium-one"></div>
+    <div class="hexagon hex-small-one"></div>
+    <div class="hexagon hex-small-two"></div>
 
-<div class="min-h-screen flex flex-col items-center justify-center px-4">
-    <div class="bg-[#E0A054] p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-center mb-6 font-audiowide">Inloggen</h2>
+    <header class="header justify-around">
+        <h1 class="header-text">Inloggen</h1>
+    </header>
+    <main class="main center-screen">
+        <div class="card">
 
-        <?php if ($login) { ?>
-            <div class="text-center space-y-4">
-                <p class="text-green-700 font-semibold">Je bent ingelogd!</p>
-                <a href="logout.php"
-                   class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105 inline-block">Uitloggen</a>
-            </div>
-        <?php } else { ?>
 
             <form action="" method="post" class="space-y-6">
                 <div>
-                    <label class="block text-gray-800 font-semibold mb-2" for="email">Email</label>
-                    <input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
-                           id="email" type="text" name="email" value="<?= htmlentities($email ?? '') ?>"/>
+                    <label class="label" for="email">Email
+                        <input class="input"
+                            id="email" type="text" name="email" value="<?= htmlentities($email ?? '') ?>" />
+                    </label>
                     <?php if (isset($errors['email'])) { ?>
                         <p class="text-red-600 text-sm mt-1"><?= $errors['email'] ?></p>
                     <?php } ?>
                 </div>
 
                 <div>
-                    <label class="block text-gray-800 font-semibold mb-2" for="password_hash">Wachtwoord</label>
-                    <input class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
-                           id="password_hash" type="password" name="password_hash"/>
-                    <?php if (isset($errors['password'])) { ?>
-                        <p class="text-red-600 text-sm mt-1"><?= $errors['password'] ?></p>
-                    <?php } ?>
+                    <label class="label" for="password_hash">Wachtwoord
+                        <input class="input"
+                            id="password_hash" type="password" name="password_hash" />
+                        <?php if (isset($errors['password'])) { ?>
+                    </label>
+                    <p class="text-red-600 text-sm mt-1"><?= $errors['password'] ?></p>
+                <?php } ?>
                 </div>
 
                 <?php if (isset($errors['loginFailed'])) { ?>
@@ -121,22 +118,25 @@ if (isset($_POST['submit'])) {
                     </div>
                 <?php } ?>
 
-                <button class="w-full bg-[#87A4B7] hover:bg-gray-800 text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105"
-                        type="submit" name="submit">Log in
+                <button class="button  font-semibold bg-[#87A4B7]"
+                    type="submit" name="submit">Log in
                 </button>
             </form>
 
-            <div class="mt-6 space-y-3 text-center">
+            <div class="mt-6 flex flex-col gap-4">
                 <a href="../createaccount.html"
-                   class="block bg-[#A2B585] text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">Maak een account</a>
+                    class="button bg-sucsses">Maak een account</a>
                 <a href="../start2.html"
-                   class="block bg-[#B18A5E] text-white px-6 py-3 rounded-lg shadow-md transition transform hover:scale-105">&laquo;
+                    class="button bg-secondary">&laquo;
                     Terug naar start</a>
             </div>
-
-        <?php } ?>
-    </div>
-</div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>Copyright 2025 - TLE1 Team 3</p>
+    </footer>
+    <div class="wave-bottom"></div>
+    <div class="wave-accent"></div>
 </body>
 
 </html>
