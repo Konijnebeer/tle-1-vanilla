@@ -41,23 +41,23 @@ function getTimeAgo(dateString) {
     const diffInYears = Math.floor(diffInDays / 365);
 
     if (diffInSeconds < 60) {
-        return diffInSeconds <= 1 ? "just now" : `${diffInSeconds} seconds ago`;
+        return diffInSeconds <= 1 ? "net geleden" : `${diffInSeconds} seconden geleden`;
     } else if (diffInMinutes < 60) {
         return diffInMinutes === 1
-            ? "1 minute ago"
-            : `${diffInMinutes} minutes ago`;
+            ? "1 minute geleden"
+            : `${diffInMinutes} minuten geleden`;
     } else if (diffInHours < 24) {
-        return diffInHours === 1 ? "1 hour ago" : `${diffInHours} hours ago`;
+        return diffInHours === 1 ? "1 uur geleden" : `${diffInHours} uren geleden`;
     } else if (diffInDays < 7) {
-        return diffInDays === 1 ? "1 day ago" : `${diffInDays} days ago`;
+        return diffInDays === 1 ? "1 dag geleden" : `${diffInDays} dagen geleden`;
     } else if (diffInWeeks < 4) {
-        return diffInWeeks === 1 ? "1 week ago" : `${diffInWeeks} weeks ago`;
+        return diffInWeeks === 1 ? "1 week geleden" : `${diffInWeeks} weken geleden`;
     } else if (diffInMonths < 12) {
         return diffInMonths === 1
-            ? "1 month ago"
-            : `${diffInMonths} months ago`;
+            ? "1 maand geleden"
+            : `${diffInMonths} maanden geleden`;
     } else {
-        return diffInYears === 1 ? "1 year ago" : `${diffInYears} years ago`;
+        return diffInYears === 1 ? "1 jaar" : `${diffInYears} jaren geleden`;
     }
 }
 
@@ -68,7 +68,7 @@ function success(data) {
     field.innerHTML = "";
 
     if (!data.posts || !Array.isArray(data.posts)) {
-        console.error("No posts data received");
+        console.error("Geen post data ontvangen");
         field.innerHTML = '<p class="no-posts">Geen berichten beschikbaar</p>';
         return;
     }
@@ -103,7 +103,7 @@ function success(data) {
         console.log(`adding badge`);
         const badge = document.createElement("span");
         // badge.innerHTML = post.badge_name
-        badge.textContent = "Verified";
+        badge.textContent = "geverifieerd";
         badge.classList.add("badge");
         nameAndGroupBox.appendChild(badge);
         // }
@@ -141,7 +141,7 @@ function success(data) {
 }
 
 function errorHandler(error) {
-    console.error("Error loading posts:", error);
+    console.error("Error laden van posten mislukt:", error);
 
     // Clear loading message
     field.innerHTML = "";
