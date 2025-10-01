@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uitnodigen - ENA</title>
+    <script type="module" src="js/invitetogroup.js" defer></script>
+    <link href="styles/post.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+</head>
+<body class="Extrabody">
+<script type="text/javascript" src="js/hex-background.js"></script>
+<div class="hexagon hex-large-one"></div>
+<div class="hexagon hex-large-two"></div>
+<div class="hexagon hex-medium-one"></div>
+<div class="hexagon hex-small-one"></div>
+<div class="hexagon hex-small-two"></div>
+<header>
+    <div class="flex items-center justify-center my-4">
+        <img src="icons/Logo-ENA-v02.png" alt="ENA Logo" class="w-12 h-12 mr-3">
+        <h1 class="font-audiowide text-2xl">Postfeed</h1>
+    </div>
+    <nav class="flex justify-center space-x-4">
+        <a href="contacten.html">
+            <button class="button">Contacten</button>
+        </a>
+        <a href="viewgroups.html">
+            <button class="button">Groepen</button>
+        </a>
+    </nav>
+</header>
+
+<main>
+    <form id="inviteForm" class="max-w-md">
+        <div class="mb-4">
+            <label for="email" class="block mb-2 font-medium">E-mailadres van de gebruiker:</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full p-2 border rounded"
+                   placeholder="voorbeeld@email.com">
+        </div>
+
+        <button type="submit" class="button">Gebruiker toevoegen</button>
+    </form>
+
+    <div id="message" class="mt-4"></div>
+</main>
+</body>
+</html>
