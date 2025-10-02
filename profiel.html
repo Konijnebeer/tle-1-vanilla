@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta
+    <head>
+        <meta charset="UTF-8">
+        <meta
             name="viewport"
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    >
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="styles/start.css"> -->
-    <!-- <link rel="stylesheet" href="styles/profiel.css"> -->
-    <link rel="stylesheet" href="styles/output.css" >
-    <script type="text/javascript" src="js/hex-background.js"></script>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=DM+Serif+Text:ital@0;1&family=Press+Start+2P&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-    </style>
-    <title>Profiel</title>
-    <script type="module" src="js/profiel.js" defer></script>
-</head>
+        >
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <link rel="stylesheet" href="styles/start.css"> -->
+        <!-- <link rel="stylesheet" href="styles/profiel.css"> -->
+        <link rel="stylesheet" href="styles/output.css">
+        <script type="text/javascript" src="js/hex-background.js"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=DM+Serif+Text:ital@0;1&family=Press+Start+2P&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+        </style>
+        <title>Profiel</title>
+        <script type="module" src="js/profiel.js" defer></script>
+    </head>
     <body>
         <div class="hexagon hex-large-one"></div>
         <div class="hexagon hex-large-two"></div>
@@ -25,8 +25,10 @@
         <div class="hexagon hex-small-two"></div>
 
         <header class="header flex flex-col py-14">
-            
-            <a href="home.html" class="button absolute left-3 top-5 max-w-30 bg-secondary hover:bg-tertiary font-semibold">← Terug</a>
+            <a
+                href="home.html"
+                class="button absolute left-3 top-5 max-w-30 bg-secondary hover:bg-tertiary font-semibold"
+            >← Terug</a>
             <p class="header-text absolute self-center top-16">Jouw Profiel</p>
 
             <div class="aspect-square absolute right-3 top-3 w-10 h-10">
@@ -34,16 +36,23 @@
             </div>
         </header>
         <main class="main center-screen flex-col">
-        <div class="card">
-            <h2 class="header-text text-md pb-4 text-sucsses text-shadow-xs">Gebruikers Profiel</h2>
-            <div id="profiel" class=""></div>
-        </div>
-            <a href="api/logout.php" class="button bg-fail max-w-50 mt-4 font-semibold">Uitloggen</a>
-    </main>
-    <footer class="footer">
-        <p>Copyright 2025 - TLE1 Team 3</p>
-    </footer>
-    <div class="wave-bottom"></div>
-    <div class="wave-accent"></div>
-</body>
+            <div class="card">
+                <h2
+                    class="header-text text-md pb-4 text-sucsses text-shadow-xs"
+                >
+                    Gebruikers Profiel
+                </h2>
+                <div id="profiel" class=""></div>
+            </div>
+            <a
+                href="api/logout.php"
+                class="button bg-fail max-w-50 mt-4 font-semibold"
+            >Uitloggen</a>
+        </main>
+        <footer class="footer">
+            <p>Copyright 2025 - TLE1 Team 3</p>
+        </footer>
+        <div class="wave-bottom fixed! bottom-0"></div>
+        <div class="wave-accent fixed! bottom-0"></div>
+    </body>
 </html>
